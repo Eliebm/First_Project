@@ -1,11 +1,10 @@
 .container{
-
     display:flex;
     flex-direction:row;
     flex-wrap: wrap;
     justify-content:center;
     align-content: center;
-    padding-top: 15%;
+    padding-top: 9%;
     padding-bottom: 15%;
     padding-left: 2%;
     padding-right: 2%;
@@ -15,6 +14,7 @@ h1{
 
     color:white;
     font-size:3em;
+    font-weight:700;
     text-align:left;
     width:100%;
 }
@@ -25,23 +25,45 @@ p{
 
 }
 .section{
+    padding-top: 7%;
     
-    padding: 1%;
     width: 35%;
     align-content:center;
     margin: 1em;
-    background-color: aquamarine;
+    
     
 }
 .section-form{
-    padding: 3em;
+    padding: 1em;
     width: 35%;
+    
     align-content:center;
-   margin: 2em;
-    background-color: lightgreen;
+    margin: 2em;
+    
     
 
 }
+
+.free-trail{
+background-color:hsl(248, 32%, 49%);
+width:100%;
+height: 2em;
+color:white;
+align-self: center;
+padding-top: 1em;
+text-align: center;
+border-radius: 10px;
+font-size: 400;
+margin-bottom: 25px;
+
+box-shadow: 0 13px 6px -6px rgba(0, 0, 0, 0.322);
+
+
+
+
+}
+
+
 form{
     width:40%;
 }
