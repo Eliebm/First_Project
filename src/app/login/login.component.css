@@ -1,0 +1,47 @@
+.container{
+
+    display:flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content:center;
+    align-content: center;
+    padding-top: 15%;
+    padding-bottom: 15%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+h1{
+
+    color:white;
+    font-size:3em;
+    text-align:left;
+    width:100%;
+}
+p{
+    color:white;
+    text-align:left;
+    
+
+}
+.section{
+    
+    padding: 1%;
+    width: 35%;
+    align-content:center;
+    margin: 1em;
+    background-color: aquamarine;
+    
+}
+.section-form{
+    padding: 3em;
+    width: 35%;
+    align-content:center;
+   margin: 2em;
+    background-color: lightgreen;
+    
+
+}
+form{
+    width:40%;
+}
