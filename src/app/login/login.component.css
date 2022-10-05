@@ -118,7 +118,7 @@ box-shadow: 0 7px 7px 0px rgba(0, 0, 0, 0.322);
 form{
 min-width:350px;
 background-color: white;
-
+height: 450px;
 width:100%;
 align-self: center;
 padding-top: 13px;
@@ -127,7 +127,8 @@ border-radius: 10px;
 font-size: 400;
 margin-bottom: 27px;
 
-box-shadow: 0 7px 7px 0px rgba(0, 0, 0, 0.322);
+box-shadow: 0 7px 4px 0px rgba(0, 0, 0, 0.322);
+
 
 
 }
@@ -185,8 +186,10 @@ input:focus {
 label{
     text-align:end;
     padding-right: 7%;
-    font-size: small;
+    font-size: 10px;
+    font-weight: 600;
     color:hsl(0, 100%, 74%) ;
+    font-style: italic;
     
     
 }
@@ -201,4 +204,15 @@ span{
     position: absolute;
     right:10%;
     bottom: 10px;
+}
+.bottom-term{
+    color:  hsl(246, 25%, 77%);
+    font-size: 10px;
+    padding-bottom: 10px;
+    
+}
+
+.bottom-term-bold{
+    color:hsl(0, 100%, 74%) ;
+    font-weight:bolder;
 }
