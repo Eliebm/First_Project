@@ -1,34 +1,64 @@
-@media all and (max-width:900px) {
+@media only screen and (max-width:600px) {
 
     .container{
         
         display:flex;
-    flex-direction:column;
-    flex-wrap: wrap;
-    justify-content:center;
-    align-content: center;
-    padding-top: 9%;
-    padding-bottom: 15%;
-    padding-left: 2%;
-    padding-right: 2%;
+        flex-direction:column;
+        flex-wrap: wrap;
+        align-content: center;
+        padding-top:1px ;
+        padding-bottom: 15%;
+        padding-left: 2%;
+        padding-right: 2%;
     }
+
+    .section{
+        padding-left: 40px;
+        text-align: center;
+        padding-top: 10px;
+    }
+    
     
 
 }
-@media all and (min-width:900px) {
+@media only screen and (max-width: 990px) and (min-width: 590px)  {
+
+    .container{
+        display:flex;
+        flex-direction:column;
+        flex-wrap: wrap;
+        padding-top: 1px;
+        align-content: center;
+    }
+    .section{
+        padding-left: 40px;
+        text-align: center;
+        padding-top: 10px;
+    }
+    
+}
+@media only screen and (min-width:990px) {
+
 .container{
     display:flex;
     flex-direction:row;
     flex-wrap: wrap;
     justify-content:center;
     align-content: center;
-    padding-top: 9%;
+    padding-top: 5%;
     padding-bottom: 15%;
     padding-left: 2%;
     padding-right: 2%;
 }
+.section{
+    padding-top: 10%;
+    
+}
+
 
 }
+
+
 h1{
 
     color:white;
@@ -44,18 +74,19 @@ p{
 
 }
 .section{
-    padding-top: 7%;
+    
     
     width: 35%;
-    align-content:center;
+    text-align: center;
     margin: 1em;
+    min-width: 400px;
     
     
 }
 .section-form{
     padding: 1em;
     width: 35%;
-    
+    min-width: 400px;
     align-content:center;
     margin: 2em;
     
@@ -76,7 +107,7 @@ border-radius: 10px;
 font-size: 400;
 margin-bottom: 25px;
 
-box-shadow: 0 13px 6px -6px rgba(0, 0, 0, 0.322);
+box-shadow: 0 7px 7px 0px rgba(0, 0, 0, 0.322);
 
 
 
@@ -85,16 +116,89 @@ box-shadow: 0 13px 6px -6px rgba(0, 0, 0, 0.322);
 
 
 form{
+min-width:350px;
 background-color: white;
-padding:10%;
+
 width:100%;
 align-self: center;
-padding-top: 1em;
+padding-top: 13px;
 text-align: center;
 border-radius: 10px;
 font-size: 400;
-margin-bottom: 25px;
+margin-bottom: 27px;
 
-box-shadow: 0 13px 6px -6px rgba(0, 0, 0, 0.322);
+box-shadow: 0 7px 7px 0px rgba(0, 0, 0, 0.322);
 
+
+}
+
+.form-control{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-left: 8%;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    height: 30px;
+    width: 80%;
+    
+   
+   background-color: white;
+   border: 1px solid lightgray;
+   border-radius: 5px;
+   padding-top: 5px;
+    padding-left: 25px;
+    padding-bottom: 5px;
+    font-weight: 700;
+   
+}
+
+.form-group{
+    display:flex;
+    flex-direction: column;
+    flex-wrap:wrap;
+    
+    
+}
+
+
+input:focus {
+    outline: none;
+    border: 2px solid hsl(248, 32%, 49%);
+    
+}
+.submit_button {
+    
+    background-color: hsl(154, 59%, 51%);
+    
+    margin-bottom: 20px;
+    height: 45px;
+    width: 86%;
+    border-radius: 5px;
+    border:none;
+    font-weight: 700;
+    color: white;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+label{
+    text-align:end;
+    padding-right: 7%;
+    font-size: small;
+    color:hsl(0, 100%, 74%) ;
+    
+    
+}
+.input-icon{
+  display: flex;
+  align-items: center;
+  position: relative;
+
+}
+
+span{
+    position: absolute;
+    right:10%;
+    bottom: 10px;
 }
