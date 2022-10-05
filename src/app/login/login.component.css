@@ -209,10 +209,13 @@ span{
     color:  hsl(246, 25%, 77%);
     font-size: 10px;
     padding-bottom: 10px;
+    font-weight: 700;
     
 }
 
 .bottom-term-bold{
     color:hsl(0, 100%, 74%) ;
-    font-weight:bolder;
+    
+    
+    
 }
