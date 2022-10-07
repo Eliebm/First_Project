@@ -47,13 +47,22 @@ export class LoginComponent implements OnInit {
     console.log("form submitted !");
    }
     else{
-      
+      this.validateAllFields(this.loginform);
      
       }
       
       
     }
-
+    validateAllFields(formGroup: FormGroup) {         
+      Object.keys(formGroup.controls).forEach(field => {  
+          const control = formGroup.get(field);            
+          if (control instanceof FormControl) {             
+              control.markAsTouched({ onlySelf: true });
+          } else if (control instanceof FormGroup) {        
+              this.validateAllFields(control);  
+          }
+      });
+  }
    
   }
 
