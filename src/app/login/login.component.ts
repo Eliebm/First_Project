@@ -7,7 +7,8 @@ import { FormGroup, FormControl,Validator, Validators } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-    public emailmsg : string="Email Address";
+     emailmsg : string="Email Address";
+     email_msg_style:string ="";
     
 
     
@@ -45,6 +46,7 @@ export class LoginComponent implements OnInit {
    }
     else{
       this.emailmsg="example@example.com";
+      this.email_msg_style="red";
     }
 
    
