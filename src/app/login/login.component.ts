@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl,Validator, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'pm-login',
@@ -8,14 +8,14 @@ import { FormGroup, FormControl,Validator, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
      emailmsg : string="Email Address";
-     email_msg_style:string ="";
-    
-
-    
-   loginform= new FormGroup({
-    fname:new FormControl("",[Validators.required]),
-    lname:new FormControl("",[Validators.required]),
-    email:new FormControl("",[Validators.required]),
+     
+     
+     
+    loginform= new FormGroup({
+    fname:new FormControl(null,[Validators.required]),
+    lname:new FormControl(null,[Validators.required]),
+    email:new FormControl(null,[Validators.required,Validators.email]),
+    password:new FormControl(null,[Validators.required])
 
    });
 
@@ -33,22 +33,27 @@ export class LoginComponent implements OnInit {
     return this.loginform.get('lname');
   }
   get emailvalid(){
-    
     return this.loginform.get('email');
   }
-  
+  get passwordvalid(){
+    return this.loginform.get('password');
+  }
 
  
 
   submit():void{
    if(this.loginform.valid){
+    console.log(this.loginform.value);
     console.log("form submitted !");
    }
     else{
-      this.emailmsg="example@example.com";
-      this.email_msg_style="red";
+      
+     
+      }
+      
+      
     }
 
    
   }
-}
+
