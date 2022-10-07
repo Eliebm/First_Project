@@ -13,7 +13,7 @@
     <input class="form-control" type="text" id="firstname" name="firstname" placeholder="First Name" formControlName="fname" >
    <span class="alert" *ngIf="fnamevalid && fnamevalid.invalid && fnamevalid.touched"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle fill="#FF7979" cx="12" cy="12" r="12"/><rect fill="#FFF" x="11" y="6" width="2" height="9" rx="1"/><rect fill="#FFF" x="11" y="17" width="2" height="2" rx="1"/></g></svg></span>
     </div>
-    <label for="firstname" >First Name cannot be empty </label>
+    <label *ngIf="fnamevalid && fnamevalid.invalid && fnamevalid.touched" for="firstname" >First Name cannot be empty </label>
     </div>
     <div class="form-group">
     <div class="input-icon">
@@ -24,8 +24,8 @@
     </div>  
     <div class="form-group">
         <div class="input-icon">
-    <input class="form-control"type="email" id="email" name="email" placeholder="Email Address" required>
-    <span><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle fill="#FF7979" cx="12" cy="12" r="12"/><rect fill="#FFF" x="11" y="6" width="2" height="9" rx="1"/><rect fill="#FFF" x="11" y="17" width="2" height="2" rx="1"/></g></svg></span>
+    <input class="form-control"type="email" id="email" name="email" placeholder="{{emailmsg}}" formControlName="email">
+    <span class="alert" *ngIf="emailvalid && emailvalid.invalid && emailvalid.touched"><svg  width="24" height="24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle fill="#FF7979" cx="12" cy="12" r="12"/><rect fill="#FFF" x="11" y="6" width="2" height="9" rx="1"/><rect fill="#FFF" x="11" y="17" width="2" height="2" rx="1"/></g></svg></span>
     </div>
     <label for="email">First Name cannot be empty  </label>
     </div>

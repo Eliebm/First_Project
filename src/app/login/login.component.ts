@@ -7,11 +7,14 @@ import { FormGroup, FormControl,Validator, Validators } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-    public first_name : string='';
+    public emailmsg : string="Email Address";
+    
 
+    
    loginform= new FormGroup({
     fname:new FormControl("",[Validators.required]),
-    lname:new FormControl(''),
+    lname:new FormControl("",[Validators.required]),
+    email:new FormControl("",[Validators.required]),
 
    });
 
@@ -20,15 +23,30 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
    
   }
-
   get fnamevalid(){
-
+    
     return this.loginform.get('fname');
   }
+  get lnamevalid(){
+    
+    return this.loginform.get('lname');
+  }
+  get emailvalid(){
+    
+    return this.loginform.get('email');
+  }
+  
 
  
 
   submit():void{
-   console.log(this.first_name);
+   if(this.loginform.valid){
+    console.log("form submitted !");
+   }
+    else{
+      this.emailmsg="example@example.com";
+    }
+
+   
   }
 }
