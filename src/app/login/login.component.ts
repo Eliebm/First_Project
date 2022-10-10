@@ -7,7 +7,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-     emailmsg : string="Email Address";
+  emailvalue:string="";
      
      
      
@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
     return this.loginform.get('lname');
   }
   get emailvalid(){
+    
     return this.loginform.get('email');
   }
   get passwordvalid(){
@@ -45,9 +46,11 @@ export class LoginComponent implements OnInit {
    if(this.loginform.valid){
     console.log(this.loginform.value);
     console.log("form submitted !");
+    
    }
     else{
       this.validateAllFields(this.loginform);
+      this.emailvalue="email@example/com";
      
       }
       

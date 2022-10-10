@@ -223,6 +223,6 @@ span{
 .form-control.ng-touched.ng-invalid{
     
     border:2px solid hsl(0, 100%, 74%) ;
-    
+    color:red;
     
 }
