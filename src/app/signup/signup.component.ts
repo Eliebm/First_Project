@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'pm-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'pm-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.css']
 })
-export class LoginComponent implements OnInit {
+export class SignupComponent implements OnInit {
   emailvalue:string="";
      
      
