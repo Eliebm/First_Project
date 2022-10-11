@@ -33,7 +33,7 @@ export class SignupComponent implements OnInit {
     return this.loginform.get('lname');
   }
   get emailvalid(){
-    
+    this.emailvalue="email@example/com";
     return this.loginform.get('email');
   }
   get passwordvalid(){
@@ -50,7 +50,7 @@ export class SignupComponent implements OnInit {
    }
     else{
       this.validateAllFields(this.loginform);
-      this.emailvalue="email@example/com";
+      
      
       }
       
