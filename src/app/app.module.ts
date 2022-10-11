@@ -5,11 +5,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
+import { WarningSvgIconComponent } from './warning-svg-icon/warning-svg-icon.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SignupComponent
+    SignupComponent,
+    WarningSvgIconComponent
   ],
   imports: [
     BrowserModule,
