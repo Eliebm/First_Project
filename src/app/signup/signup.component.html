@@ -5,15 +5,16 @@
         but understanding how developers think is invaluable.</p>
     </div>
 <div class="section-form">
-    <button class="free-trail"><b>Try it free 7 days</b> then $20/mo. thereafter</button>
+    <button aria-label="subscribe" class="free-trail"><b>Try it free 7 days</b> then $20/mo. thereafter</button>
 
 <form [formGroup]="loginform" >
 
     <div class="form-group">
       <div class="input-icon">
           <input class="form-control" type="text" id="firstname" name="firstname" placeholder="First Name" formControlName="fname" >
-           <span *ngIf="fnamevalid && fnamevalid.invalid && fnamevalid.touched"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle fill="#FF7979" cx="12" cy="12" r="12"/><rect fill="#FFF" x="11" y="6" width="2" height="9" rx="1"/><rect fill="#FFF" x="11" y="17" width="2" height="2" rx="1"/></g></svg></span>
-      </div>
+          <span *ngIf="fnamevalid && fnamevalid.invalid && fnamevalid.touched"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle fill="#FF7979" cx="12" cy="12" r="12"/><rect fill="#FFF" x="11" y="6" width="2" height="9" rx="1"/><rect fill="#FFF" x="11" y="17" width="2" height="2" rx="1"/></g></svg></span>
+            
+        </div>
       <label *ngIf="fnamevalid && fnamevalid.invalid && fnamevalid.touched" for="firstname" >First Name cannot be empty </label>
     </div>
 
@@ -27,7 +28,7 @@
 
     <div class="form-group">
         <div class="input-icon">
-            <input class="form-control" type="email" id="email" name="email" placeholder="Email Address" value="{{emailvalue}}"  formControlName="email">
+            <input  class="form-control" type="email" id="email" name="email" placeholder="Email Address"  value="{{emailvalue}}" formControlName="email">
             <span *ngIf=" emailvalid && emailvalid.invalid && (emailvalid.dirty || emailvalid.touched)"><svg  width="24" height="24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle fill="#FF7979" cx="12" cy="12" r="12"/><rect fill="#FFF" x="11" y="6" width="2" height="9" rx="1"/><rect fill="#FFF" x="11" y="17" width="2" height="2" rx="1"/></g></svg></span>
         </div>
         <label *ngIf="emailvalid && emailvalid.invalid && emailvalid.touched " for="email">Looks like this is not an email  </label>
@@ -41,7 +42,7 @@
         <label *ngIf="passwordvalid && passwordvalid.invalid && passwordvalid.touched" for="password">Password cannot be empty  </label>
     </div>
 
-    <button  class="submit-button" type="submit" [disabled]="!loginform.valid"  (click)="submit()" aria-label="submit form">CLAIM YOUR FREE TRAIL</button>
+    <button aria-labelledby="send" class="submit-button" type="submit" [disabled]="!loginform.valid"  (click)="submit()" aria-label="submit form">CLAIM YOUR FREE TRAIL</button>
     
     <div class="bottom-term">By clicking the button, you are agreeing to our  <b class="bottom-term-bold">Terms and Services </b></div>
     

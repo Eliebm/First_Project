@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
+
+
 @Component({
   selector: 'pm-signup',
   templateUrl: './signup.component.html',
@@ -39,8 +41,12 @@ export class SignupComponent implements OnInit {
   get passwordvalid(){
     return this.loginform.get('password');
   }
+   
+    
+   
+    
 
- 
+  
 
   submit():void{
    if(this.loginform.valid){
