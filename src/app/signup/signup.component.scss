@@ -1,3 +1,6 @@
+$redColor:hsl(0, 100%, 74%) ;
+$blueColor:hsl(248, 32%, 49%);
+$greenColor:hsl(154, 59%, 51%);
 
 @media only screen and (max-width:600px) {
 
@@ -97,7 +100,7 @@ p{
 }
 
 .free-trail{
-    background-color:hsl(248, 32%, 49%);
+    background-color:$blueColor;
     min-width: 350px;
     width:100%;
     height: 50px;
@@ -173,12 +176,12 @@ box-shadow: 0 7px 4px 0px rgba(0, 0, 0, 0.322);
 
 input:focus {
     outline: none;
-    border: 2px solid hsl(248, 32%, 49%);
+    border: 2px solid $blueColor;
     
 }
 .submit-button {
     
-    background-color: hsl(154, 59%, 51%);
+    background-color: $greenColor;
     
     margin-bottom: 20px;
     height: 45px;
@@ -233,7 +236,7 @@ span{
 }
 
 .bottom-term-bold{
-    color:hsl(0, 100%, 74%) ;
+    color:$redColor ;
     
     
     
@@ -241,8 +244,8 @@ span{
 
 .form-control.ng-touched.ng-invalid{
     
-    border:2px solid hsl(0, 100%, 74%) ;
-    color:red;
+    border:2px solid $redColor ;
+    color:$redColor;
     
     
 }

@@ -11,7 +11,7 @@
 
     <div class="form-group">
       <div class="input-icon">
-          <input class="form-control" type="text" id="firstname" name="firstname" placeholder="First Name" formControlName="fname" >
+          <input class="form-control" type="text" id="firstname" name="firstname" aria-label="name" placeholder="First Name" formControlName="fname" >
           <span *ngIf="fnamevalid && fnamevalid.invalid && fnamevalid.touched"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle fill="#FF7979" cx="12" cy="12" r="12"/><rect fill="#FFF" x="11" y="6" width="2" height="9" rx="1"/><rect fill="#FFF" x="11" y="17" width="2" height="2" rx="1"/></g></svg></span>
             
         </div>
@@ -20,7 +20,7 @@
 
     <div class="form-group">
         <div class="input-icon">
-           <input class="form-control" type="text" id="lastname" name="lastname" placeholder="Last Name" formControlName="lname" >
+           <input class="form-control" type="text" id="lastname" name="lastname" aria-label="last-name" placeholder="Last Name" formControlName="lname" >
            <span *ngIf="lnamevalid && lnamevalid.invalid && lnamevalid.touched "><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle fill="#FF7979" cx="12" cy="12" r="12"/><rect fill="#FFF" x="11" y="6" width="2" height="9" rx="1"/><rect fill="#FFF" x="11" y="17" width="2" height="2" rx="1"/></g></svg></span>
         </div>
          <label *ngIf="lnamevalid && lnamevalid.invalid && lnamevalid.touched " for="lastname">last Name cannot be empty  </label>
@@ -28,7 +28,7 @@
 
     <div class="form-group">
         <div class="input-icon">
-            <input  class="form-control" type="email" id="email" name="email" placeholder="Email Address"  value="{{emailvalue}}" formControlName="email">
+            <input  class="form-control" type="email" id="email" name="email" placeholder="Email Address" aria-label="Email"  value="{{emailvalue}}" formControlName="email">
             <span *ngIf=" emailvalid && emailvalid.invalid && (emailvalid.dirty || emailvalid.touched)"><svg  width="24" height="24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle fill="#FF7979" cx="12" cy="12" r="12"/><rect fill="#FFF" x="11" y="6" width="2" height="9" rx="1"/><rect fill="#FFF" x="11" y="17" width="2" height="2" rx="1"/></g></svg></span>
         </div>
         <label *ngIf="emailvalid && emailvalid.invalid && emailvalid.touched " for="email">Looks like this is not an email  </label>
@@ -36,7 +36,7 @@
 
     <div class="form-group">
         <div class="input-icon">
-           <input class="form-control" type="password" id="password" name="password" placeholder="Password" formControlName="password">
+           <input class="form-control" type="password" id="password" name="password" placeholder="Password" aria-label="Password"  formControlName="password">
            <span *ngIf="passwordvalid && passwordvalid.invalid && passwordvalid.touched"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle fill="#FF7979" cx="12" cy="12" r="12"/><rect fill="#FFF" x="11" y="6" width="2" height="9" rx="1"/><rect fill="#FFF" x="11" y="17" width="2" height="2" rx="1"/></g></svg></span>
         </div>
         <label *ngIf="passwordvalid && passwordvalid.invalid && passwordvalid.touched" for="password">Password cannot be empty  </label>
