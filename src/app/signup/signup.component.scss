@@ -1,3 +1,6 @@
+$redColor:hsl(0, 100%, 74%) ;
+$blueColor:hsl(248, 32%, 49%);
+$greenColor:hsl(154, 59%, 51%);
 
 @media only screen and (max-width:600px) {
 
@@ -13,9 +16,9 @@
     }
 
     .section{
-        padding-left: 40px;
+        
         text-align: center;
-        padding-top: 10px;
+        padding:10px 0px 0px 40px ;
     }
     
     
@@ -97,7 +100,7 @@ p{
 }
 
 .free-trail{
-    background-color:hsl(248, 32%, 49%);
+    background-color:$blueColor;
     min-width: 350px;
     width:100%;
     height: 50px;
@@ -124,7 +127,7 @@ p{
 form{
 min-width:350px;
 background-color: white;
-min-height: 405px;
+min-height: 412px;
 max-height:fit-content;
 width:100%;
 align-self: center;
@@ -151,6 +154,7 @@ box-shadow: 0 7px 4px 0px rgba(0, 0, 0, 0.322);
     height: 30px;
     width: 80%;
     
+    
    
    background-color: white;
    border: 1px solid lightgray;
@@ -173,28 +177,25 @@ box-shadow: 0 7px 4px 0px rgba(0, 0, 0, 0.322);
 
 input:focus {
     outline: none;
-    border: 2px solid hsl(248, 32%, 49%);
+    border: 2px solid $blueColor;
     
 }
 .submit-button {
     
-    background-color: hsl(154, 59%, 51%);
-    
-    margin-bottom: 20px;
+    background-color: $greenColor;
     height: 45px;
     width: 86%;
     border-radius: 5px;
     border:none;
     font-weight: 700;
     color: white;
-    margin-top: 20px;
-    margin-left: 10px;
+    margin:20px 0 20px 10px;
     cursor:pointer;
     
 }
 
 .submit-button:hover{
-    box-shadow: 0 0px 2px 0px hsl(154, 59%, 51%);
+    box-shadow: 0 0px 2px 0px $greenColor;
 }
 
 label{
@@ -233,7 +234,7 @@ span{
 }
 
 .bottom-term-bold{
-    color:hsl(0, 100%, 74%) ;
+    color:$redColor ;
     
     
     
@@ -241,8 +242,8 @@ span{
 
 .form-control.ng-touched.ng-invalid{
     
-    border:2px solid hsl(0, 100%, 74%) ;
-    color:red;
+    border:2px solid $redColor ;
+    color:$redColor;
     
     
 }

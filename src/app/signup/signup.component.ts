@@ -1,20 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, UntypedFormControl } from '@angular/forms';
+
+
 
 @Component({
   selector: 'pm-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-  emailvalue:string="";
+
+    emailValue:string="Email Address";
      
      
      
-    loginform= new FormGroup({
+    signupForm= new FormGroup({
     fname:new FormControl(null,[Validators.required]),
     lname:new FormControl(null,[Validators.required]),
-    email:new FormControl(null,[Validators.required,Validators.email]),
+    email:new FormControl('',[Validators.required,Validators.email,Validators.nullValidator]),
     password:new FormControl(null,[Validators.required])
 
    });
@@ -24,32 +27,42 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
    
   }
-  get fnamevalid(){
+  get fnameValid(){
     
-    return this.loginform.get('fname');
+    return this.signupForm.get('fname');
   }
-  get lnamevalid(){
+  get lnameValid(){
     
-    return this.loginform.get('lname');
+    return this.signupForm.get('lname');
   }
-  get emailvalid(){
-    this.emailvalue="email@example/com";
-    return this.loginform.get('email');
+  get emailValid(){
+    
+    return this.signupForm.get('email');
+    
+    
   }
-  get passwordvalid(){
-    return this.loginform.get('password');
+  get passwordValid(){
+    return this.signupForm.get('password');
   }
-
- 
+   
+  changeEmailValue(emailVal:string){
+    
+      if(this.signupForm.get('email')?.value===""){
+           this.emailValue=emailVal;
+    
+    }
+  
+  }
+  
 
   submit():void{
-   if(this.loginform.valid){
-    console.log(this.loginform.value);
+   if(this.signupForm.valid){
+    console.log(this.signupForm.value);
     console.log("form submitted !");
     
    }
     else{
-      this.validateAllFields(this.loginform);
+      this.validateAllFields(this.signupForm);
       
      
       }
