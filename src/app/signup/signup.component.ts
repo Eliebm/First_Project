@@ -10,7 +10,7 @@ import { FormGroup, FormControl, Validators, UntypedFormControl } from '@angular
 })
 export class SignupComponent implements OnInit {
 
- 
+    emailValue:string="Email Address";
      
      
      
@@ -45,11 +45,11 @@ export class SignupComponent implements OnInit {
     return this.signupForm.get('password');
   }
    
-  changeEmailValue(emailValue:string){
-    if(this.signupForm.get('email')?.valueChanges){
+  changeEmailValue(emailVal:string){
+    
       if(this.signupForm.get('email')?.value===""){
-      this.signupForm.controls.email.setValue(emailValue);
-    }
+           this.emailValue=emailVal;
+    
     }
   
   }

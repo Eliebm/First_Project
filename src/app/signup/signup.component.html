@@ -28,7 +28,7 @@
 
     <div class="form-group">
         <div class="input-icon">
-            <input  class="form-control" type="email"  id="email" name="email" placeholder="Email Address" aria-label="Email" (focus)="changeEmailValue('email@example/com')" formControlName="email">
+            <input  class="form-control" type="email"  id="email" name="email" placeholder="{{emailValue}}" aria-label="Email" (focus)="changeEmailValue('email@example/com')" formControlName="email">
             <span *ngIf=" emailValid && emailValid.invalid && (emailValid.dirty || emailValid.touched)"><pm-warning-svg-icon aria-label="warning icon"></pm-warning-svg-icon></span>
         </div>
         <label *ngIf="emailValid && emailValid.invalid && (emailValid.dirty || emailValid.touched) " for="email">Looks like this is not an email  </label>
