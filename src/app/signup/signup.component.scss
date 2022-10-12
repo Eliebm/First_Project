@@ -16,9 +16,9 @@ $greenColor:hsl(154, 59%, 51%);
     }
 
     .section{
-        padding-left: 40px;
+        
         text-align: center;
-        padding-top: 10px;
+        padding:10px 0px 0px 40px ;
     }
     
     
@@ -154,6 +154,7 @@ box-shadow: 0 7px 4px 0px rgba(0, 0, 0, 0.322);
     height: 30px;
     width: 80%;
     
+    
    
    background-color: white;
    border: 1px solid lightgray;
@@ -182,16 +183,13 @@ input:focus {
 .submit-button {
     
     background-color: $greenColor;
-    
-    margin-bottom: 20px;
     height: 45px;
     width: 86%;
     border-radius: 5px;
     border:none;
     font-weight: 700;
     color: white;
-    margin-top: 20px;
-    margin-left: 10px;
+    margin:20px 0 20px 10px;
     cursor:pointer;
     
 }

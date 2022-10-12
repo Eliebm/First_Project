@@ -9,14 +9,15 @@ import { FormGroup, FormControl, Validators, UntypedFormControl } from '@angular
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-  emailvalue:string="Email Address";
+
+ 
      
      
      
-    signupform= new FormGroup({
+    signupForm= new FormGroup({
     fname:new FormControl(null,[Validators.required]),
     lname:new FormControl(null,[Validators.required]),
-    email:new FormControl(null,[Validators.required,Validators.email,Validators.nullValidator]),
+    email:new FormControl('',[Validators.required,Validators.email,Validators.nullValidator]),
     password:new FormControl(null,[Validators.required])
 
    });
@@ -26,35 +27,42 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
    
   }
-  get fnamevalid(){
+  get fnameValid(){
     
-    return this.signupform.get('fname');
+    return this.signupForm.get('fname');
   }
-  get lnamevalid(){
+  get lnameValid(){
     
-    return this.signupform.get('lname');
+    return this.signupForm.get('lname');
   }
-  get emailvalid(){
-     this.emailvalue="email@example/com";
-    return this.signupform.get('email');
+  get emailValid(){
+    
+    return this.signupForm.get('email');
     
     
   }
-  get passwordvalid(){
-    return this.signupform.get('password');
+  get passwordValid(){
+    return this.signupForm.get('password');
   }
    
-    
+  changeEmailValue(emailValue:string){
+    if(this.signupForm.get('email')?.valueChanges){
+      if(this.signupForm.get('email')?.value===""){
+      this.signupForm.controls.email.setValue(emailValue);
+    }
+    }
+  
+  }
   
 
   submit():void{
-   if(this.signupform.valid){
-    console.log(this.signupform.value);
+   if(this.signupForm.valid){
+    console.log(this.signupForm.value);
     console.log("form submitted !");
     
    }
     else{
-      this.validateAllFields(this.signupform);
+      this.validateAllFields(this.signupForm);
       
      
       }
