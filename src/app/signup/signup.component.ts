@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, UntypedFormControl } from '@angular/forms';
 
 
 
@@ -9,14 +9,14 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-  emailvalue:string="";
+  emailvalue:string="Email Address";
      
      
      
-    loginform= new FormGroup({
+    signupform= new FormGroup({
     fname:new FormControl(null,[Validators.required]),
     lname:new FormControl(null,[Validators.required]),
-    email:new FormControl(null,[Validators.required,Validators.email]),
+    email:new FormControl(null,[Validators.required,Validators.email,Validators.nullValidator]),
     password:new FormControl(null,[Validators.required])
 
    });
@@ -28,34 +28,33 @@ export class SignupComponent implements OnInit {
   }
   get fnamevalid(){
     
-    return this.loginform.get('fname');
+    return this.signupform.get('fname');
   }
   get lnamevalid(){
     
-    return this.loginform.get('lname');
+    return this.signupform.get('lname');
   }
   get emailvalid(){
-    this.emailvalue="email@example/com";
-    return this.loginform.get('email');
+     this.emailvalue="email@example/com";
+    return this.signupform.get('email');
+    
+    
   }
   get passwordvalid(){
-    return this.loginform.get('password');
+    return this.signupform.get('password');
   }
    
     
-   
-    
-
   
 
   submit():void{
-   if(this.loginform.valid){
-    console.log(this.loginform.value);
+   if(this.signupform.valid){
+    console.log(this.signupform.value);
     console.log("form submitted !");
     
    }
     else{
-      this.validateAllFields(this.loginform);
+      this.validateAllFields(this.signupform);
       
      
       }
