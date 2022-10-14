@@ -1,0 +1,145 @@
+@media only screen and (max-width:500px) {
+    form{
+        position: absolute;
+        
+        max-width:300px;
+       
+        
+        
+        
+    }
+    .alert{
+        max-width:200px;
+        
+    }
+    
+}
+@media only screen and (max-height:650px){
+
+    .container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        max-height: 700px;
+        overflow:scroll;
+        background: red;
+    }
+    form{
+        
+        margin-top: 25px;
+        background-color: black;
+    }
+    
+
+}
+
+ .alert {
+    position:absolute;
+    left:50%;
+    top: 10%;
+    width: 440px;
+    padding: 20px;
+    background-color: #f4433680; 
+    color: white;
+    margin-bottom:0px 0 15px 100px;
+    transform: translate(-50%,-50%);
+    border-radius:35px;
+  }
+  
+  /* The close button */
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+
+  .closebtn:hover {
+    color: black;
+  } 
+
+
+
+form{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content:flex-start;
+    box-sizing: border-box;
+    position: absolute;
+    width: 440px;
+    height: 400px;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    background-image: linear-gradient(rgba(0, 0, 255, 0.447), rgba(0, 0, 255, 0.324),rgba(0, 0, 255, 0.169)); 
+    
+    box-shadow: 0px 1px 4px rgba(55, 55, 245, 0.374);
+    border-radius: 35px;
+    
+}
+
+h1{
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-bottom: 35px;
+}
+
+input{
+     width: 80%;
+     height: 30px;
+     margin:5px 25px 15px 25px;
+     background-image: radial-gradient(black,rgba(0, 0, 0, 0.902));
+     padding: 2%;
+     border-radius: 25px;
+     border: 0;
+     text-align: center;
+     color: white;
+     font-size: large;
+
+}
+.signup{
+    text-align: center;
+    
+}
+.signup p {
+    color: beige;
+    font-size: small;
+}
+.signup a{
+    color:blue;
+    font-weight: bold;
+    font-size: medium;
+}
+.signup a:hover{
+   text-decoration: underline;
+   
+    
+    cursor: pointer;
+    
+}
+
+button{
+    
+    width: 35%;
+    height: 35px;
+    margin:35px 30% 15px 30%;
+    background-color:green;
+    padding:2%;
+    border-radius: 25px;
+    border: 0;
+    text-align: center;
+    color: white;
+
+}
+button:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+}
