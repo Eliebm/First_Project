@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../account.service';
-import { FormControl, FormGroup, NgModel, Validators } from '@angular/forms';
+import { FormControl, FormGroup, NgModel, UntypedFormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'pm-login',
@@ -8,13 +8,17 @@ import { FormControl, FormGroup, NgModel, Validators } from '@angular/forms';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+
 export class LoginComponent implements OnInit {
-  checkName:string=" ";
+
+  haserrorMsg:boolean=true;
+  errorMsg:string="";
+  storage:any;
   
   loginForm= new FormGroup({
     name:new FormControl(null,[Validators.required]),
     password:new FormControl(null,[Validators.required]),
-    type:new FormControl(null)
+    type:new FormControl(null,[Validators.required])
 
    });
    get nameValid(){
@@ -36,20 +40,39 @@ export class LoginComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    
   }
   ngOnDestroy(){
     
   }
   
   submit():void{
-   console.log(this.accountserv.getAccount(this.nameValid?.value,this.passwordValid?.value,this.typeValid?.value));
-   if(this.accountserv.getAccount(this.nameValid?.value,this.passwordValid?.value,this.typeValid?.value)===true){
-    location.href="/Signup";
-   }
+    if(this.loginForm.invalid){
+      this.haserrorMsg=false;
+      this.errorMsg="there are items that require your attention !";
+    }
+    else{
+      
+      if(this.accountserv.getAccount(this.nameValid?.value,this.passwordValid?.value,this.typeValid?.value)===true){
+        this.storage=this.loginForm.get('type')?.value;
+        
+        sessionStorage.setItem('accountType',this.storage);
+        
+       location.href="/Signup";
+      }else{
+       this.haserrorMsg=false;
+       this.errorMsg="You have Entered an Invalid Name Or Password. Please Try Again.";
+       
+      }
+    }
+   
     
  
   }
  
+  clearErrorMessage():void{
+    this.haserrorMsg=true;
+  }
 
 }
  

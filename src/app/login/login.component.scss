@@ -10,7 +10,7 @@
     }
     .alert{
         
-        max-width:200px;
+        max-width:220px;
         
     }
     .radio{
@@ -41,7 +41,7 @@
 @media only screen and (max-height:350px){
     
     form{
-        position:fixed;
+        position:relative;
         margin-top:20%;
        
         
@@ -55,7 +55,9 @@
 
 
 }
-
+.container{
+    height: 300px;
+}
 
 
  .alert {
@@ -202,4 +204,13 @@ button:hover{
 
     background-color: rgba(255, 255, 255, 0.637);
     color: blue;
+}
+
+.form-control.ng-touched.ng-invalid{
+    
+    border:2px solid red ;
+    background-color: rgba(255, 0, 0, 0.402);
+    color:red;
+    
+    
 }

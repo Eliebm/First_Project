@@ -26,9 +26,9 @@ export class AccountService {
     Type:'admin'
   }];
 
-  getAccount(acname:any,accPassword:any,accType:any):boolean{
+  getAccount(accName:any,accPassword:any,accType:any):boolean{
     
-    var index = this.account.findIndex(e => e.Name === acname && e.Password=== accPassword && e.Type===accType);
+    var index = this.account.findIndex(e => e.Name === accName && e.Password=== accPassword && e.Type===accType);
     if (index !== -1) {
         return true;
     }
