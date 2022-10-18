@@ -2,30 +2,49 @@ $redColor:hsl(0, 100%, 74%) ;
 $blueColor:hsl(248, 32%, 49%);
 $greenColor:hsl(154, 59%, 51%);
 
-@media only screen and (max-width:600px) {
+
+
+
+@media only screen and (max-width:500px) {
 
     .container{
-        
+        max-width:10em;
         display:flex;
         flex-direction:column;
         flex-wrap: wrap;
         align-content: center;
         
         
-        padding: 1px 2% 15% 2%;
+        padding: 1px 1% 15% 25%;
     }
 
-    .section{
+    .section h1{
         
+        max-width:70%;
         text-align: center;
+        margin-left:2em;
         padding:10px 0px 0px 40px ;
+    }
+
+    
+
+    form{
+        max-width:5em;
+        margin-left:2.6em;
+    }
+
+    .free-trail{
+        max-width:2em;
+        justify-content:center;
+        margin-left:2em;
+        
     }
     
     
     
 
 }
-@media only screen and (max-width: 990px) and (min-width: 590px)  {
+@media only screen and (max-width: 990px) and (min-width: 600px)  {
 
     .container{
         display:flex;
@@ -67,17 +86,12 @@ $greenColor:hsl(154, 59%, 51%);
 h1{
 
     color:white;
-    font-size:3em;
+    font-size:2em;
     font-weight:700;
     text-align:left;
     width:100%;
 }
-p{
-    color:white;
-    text-align:left;
-    
 
-}
 .section{
     
     
@@ -100,16 +114,20 @@ p{
 }
 
 .free-trail{
+    display:inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
     background-color:$blueColor;
     min-width: 350px;
-    width:100%;
-    height: 50px;
+    width:95%;
+    height: 35px;
     color:white;
-    align-self: center;
-    cursor: pointer;
-    text-align: center;
+    
+    text-align:left;
     border-radius: 10px;
     font-size:15px;
+    padding: 7px 0 10px 20px;
     margin-bottom: 25px;
     border: none;
     box-shadow: 0 7px 4px 0px rgba(0, 0, 0, 0.322);
@@ -118,8 +136,19 @@ p{
 
 
 }
-.free-trail:hover{
-    box-shadow: 0 0px 3px 0px rgba(0, 0, 0, 0.322);
+
+.free-trail a{
+    align-self:center;
+    margin-right: 1em;
+    font-size: larger;
+    text-decoration:none;
+    
+    color: rgba(249, 246, 246, 0.632);
+    
+}
+.free-trail a:hover{
+   color:white;
+   text-decoration: underline;
 }
 
 
@@ -245,5 +274,28 @@ span{
     border:2px solid $redColor ;
     color:$redColor;
     
+    
+}
+
+.form-group-type{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+select{
+    margin: 10px;
+    max-width: 60%;
+    height:30px;
+    font-size: 15px;
+    background-color: rgba(10, 10, 255, 0.849);
+    border-radius: 5px;
+   border: none;
+   color: white;
+   text-align: center;
+}
+.form-control-select.ng-touched.ng-invalid{
+    background-color: $redColor;
     
 }

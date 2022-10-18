@@ -18,7 +18,8 @@ export class SignupComponent implements OnInit {
     fname:new FormControl(null,[Validators.required]),
     lname:new FormControl(null,[Validators.required]),
     email:new FormControl('',[Validators.required,Validators.email,Validators.nullValidator]),
-    password:new FormControl(null,[Validators.required])
+    password:new FormControl(null,[Validators.required]),
+    typeSelector:new FormControl(null,[Validators.required])
 
    });
 
@@ -44,7 +45,9 @@ export class SignupComponent implements OnInit {
   get passwordValid(){
     return this.signupForm.get('password');
   }
-   
+  get typeValid(){
+    return this.signupForm.get('typeSelector');
+  }
   changeEmailValue(emailVal:string){
     
       if(this.signupForm.get('email')?.value===""){
@@ -53,7 +56,11 @@ export class SignupComponent implements OnInit {
     }
   
   }
-  
+   
+  schange():void{
+console.log(this.typeValid?.value);
+
+  }
 
   submit():void{
    if(this.signupForm.valid){
