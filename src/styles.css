@@ -1,6 +1,7 @@
 body{
-    background-image: url("src\assets\bg-intro-desktop.png");
-    background-color:hsl(0, 100%, 74%);
-    font-size: 16px;
+    background: rgba(17, 30, 139, 0.4);
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
+
+

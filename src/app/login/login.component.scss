@@ -1,0 +1,216 @@
+@media only screen and (max-width:500px) {
+   .container{
+    width: 100%;
+
+   }
+    form{
+        position: fixed;
+         max-width:300px;
+        
+    }
+    .alert{
+        
+        max-width:220px;
+        
+    }
+    .radio{
+        display: inline-flexbox;
+        flex-direction: column;
+        max-width:235px;
+        margin-left: auto;
+     }
+    
+}
+@media only screen and (min-height:351px)and (max-height:590px){
+    
+    form{
+        position:fixed;
+        margin-top:10%;
+       
+        
+      }
+    
+      .alert{
+        position: sticky;
+        margin-top: 20px;
+        
+      }
+ 
+
+}
+@media only screen and (max-height:350px){
+    
+    form{
+        position:relative;
+        margin-top:20%;
+       
+        
+      }
+    
+      .alert{
+        position: sticky;
+        margin-top: 20px;
+        
+      }
+
+
+}
+.container{
+    height: 300px;
+}
+
+
+ .alert {
+    position:absolute;
+    left:50%;
+    top: 10%;
+    width: 300px;
+    padding: 20px;
+    background-color: #f4433680; 
+    color: white;
+    margin-bottom:0px 0 15px 100px;
+    transform: translate(-50%,-50%);
+    border-radius:35px;
+  }
+  
+  /* The close button */
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+
+  .closebtn:hover {
+    color: black;
+  } 
+
+
+
+form{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content:flex-start;
+    box-sizing: border-box;
+    position: absolute;
+    width: 440px;
+    height: 440px;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    background-image: linear-gradient(rgba(0, 0, 255, 0.447), rgba(0, 0, 255, 0.324),rgba(0, 0, 255, 0.169)); 
+    
+    box-shadow: 0px 1px 4px rgba(55, 55, 245, 0.374);
+    border-radius: 35px;
+    
+}
+
+h1{
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    padding: 7px;
+    margin-bottom: 20px;
+}
+
+input{
+     width: 80%;
+     height: 30px;
+     margin:5px 25px 15px 25px;
+     background-image: radial-gradient(black,rgba(0, 0, 0, 0.902));
+     padding: 2%;
+     border-radius: 25px;
+     text-align: center;
+     color:wheat;
+     font-size: large;
+     
+
+}
+
+input:focus{
+    
+    outline: none;
+}
+
+
+
+.signup{
+    text-align: center;
+    
+}
+.signup p {
+    color: beige;
+    font-size: small;
+}
+.signup a{
+    color:blue;
+    font-weight: bold;
+    font-size: medium;
+}
+.signup a:hover{
+   text-decoration: underline;
+   
+    
+    cursor: pointer;
+    
+}
+
+button{
+    
+    width: 35%;
+    height: 35px;
+    margin:15px 30% 15px 30%;
+    background-color:green;
+    padding:2%;
+    border-radius: 25px;
+    border: 0;
+    text-align: center;
+    color: white;
+
+}
+button:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.radio{
+    display: inline-flex;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 255, 0.135);
+    width: 350px;
+    margin:0 0 15px 35px;
+    color: white;
+    
+}
+.radio-input{
+    display: none;
+}
+
+.radio-label{
+    padding: 8px 35px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: rgba(0, 0, 255, 0.372);
+    transition: background 0.1s;
+}
+.radio-input:checked + .radio-label{
+
+    background-color: rgba(255, 255, 255, 0.637);
+    color: blue;
+}
+
+.form-control.ng-touched.ng-invalid{
+    
+    border:2px solid red ;
+    background-color: rgba(255, 0, 0, 0.402);
+    color:red;
+    
+    
+}
