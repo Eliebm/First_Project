@@ -1,9 +1,22 @@
 <div class="container">
-<div class="row">
-    <input type="search">
-    <select><option *ngFor="let reg of regionSearch" value="reg.val">{{reg.name}}</option></select>
+<div class="row-searchbar">
+    <input class="searchbar" type="text" placeholder="Search...">
+    <select class="select-region"><option *ngFor="let reg of regionSearch" value="reg.val">{{reg.name}}</option></select>
+    <button class="button-logout" (click)="logoutClick()" >Logout</button>
     
 </div>
-
+<div class="row-card">
+    <div *ngFor="let country of countryFetch " class="card" >
+      <div class="card-body" (click)="moreOnClick()">
+        <img class="country-img" src="{{country.flags.png}}">
+        <h3>{{country.name.common}}</h3>
+        <p>{{country.capital}}</p>
+        <p>{{country.region}}</p>
+        
+      </div>
+    </div>
+  
+    
+</div>
 
 </div>
