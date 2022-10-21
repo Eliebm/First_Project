@@ -1,17 +1,18 @@
 <div class="container">
 <div class="row-searchbar">
-    <input class="searchbar" type="text" placeholder="Search...">
-    <select class="select-region"><option *ngFor="let reg of regionSearch" value="reg.val">{{reg.name}}</option></select>
-    <button class="button-logout" (click)="logoutClick()" >Logout</button>
+    <input class="searchbar" type="text" aria-label="searchbar" placeholder="Search..." name="searchString" (keyup)="filterBySearch($event)">
+    <select class="select-region" aria-label="select"><option *ngFor="let reg of regionSearch" value="reg.val">{{reg.name}}</option></select>
+    <button class="button-logout" aria-label="logout-button" (click)="logoutClick()" >Logout</button>
     
 </div>
 <div class="row-card">
-    <div *ngFor="let country of countryFetch " class="card" >
+    <div *ngFor="let country of countryFetchBySearch" class="card" >
       <div class="card-body" (click)="moreOnClick()">
-        <img class="country-img" src="{{country.flags.png}}">
-        <h3>{{country.name.common}}</h3>
-        <p>{{country.capital}}</p>
-        <p>{{country.region}}</p>
+        <img class="country-img" src="{{country.flags.png}}" aria-label="flag-image">
+        <h3 aria-label="country name">{{country.name.common}}</h3>
+        <p aria-label="country capital">{{country.capital}}</p>
+        <p aria-label="country region">{{country.region}}</p>
+        
         
       </div>
     </div>
