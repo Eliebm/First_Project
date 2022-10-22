@@ -1,11 +1,15 @@
-<div class="container">
+<div class="container" >
+  <div [hidden]="loadSpinner" class="spinner-border" role="status" >
+    <span class="sr-only" id="loading"></span>
+  </div>
 <div class="row-searchbar">
-    <input class="searchbar" type="text" aria-label="searchbar" placeholder="Search..." name="searchString" (keyup)="filterBySearch($event)">
-    <select class="select-region" aria-label="select"><option *ngFor="let reg of regionSearch" value="reg.val">{{reg.name}}</option></select>
+    <input class="searchbar" type="text" aria-label="searchbar" placeholder="Search..." name="searchString" (keyup)="filterBySearch($event)" [disabled]="isDisable">
+    <select class="select-region" #region aria-label="select" (change)="filterBySelect(region.value)" [disabled]="isDisable">
+      <option *ngFor="let reg of regionSearch" value="{{reg.val}}">{{reg.name}}</option></select>
     <button class="button-logout" aria-label="logout-button" (click)="logoutClick()" >Logout</button>
     
 </div>
-<div class="row-card">
+<div [hidden]="isDisable"  class="row-card">
     <div *ngFor="let country of countryFetchBySearch" class="card" >
       <div class="card-body" (click)="moreOnClick()">
         <img class="country-img" src="{{country.flags.png}}" aria-label="flag-image">

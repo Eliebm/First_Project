@@ -2,6 +2,7 @@
 
 import { JsonPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { observable, Subject, Subscription } from 'rxjs';
 import { Icountries } from '../account';
 import { CountriesDataService } from '../countries-data.service';
 
@@ -13,12 +14,18 @@ import { CountriesDataService } from '../countries-data.service';
 })
 
 export class HomeComponent implements OnInit {
-  regionSearch:any[]=[{"val":"all","name":"Search by region"},{"val":"Africa","name":"Africa"},{"val":"Americas","name":"Americas"},
+  regionSearch:any[]=[{"val":"all","name":"All Region"},{"val":"Africa","name":"Africa"},{"val":"Americas","name":"Americas"},
   {"val":"Asia","name":"Asia"},{"val":"Europe","name":"Europe"},{"val":"Oceania","name":"Oceania"}]
   
   countryFetch:Icountries[]=[];
   countryFetchBySearch:any[]=[];
   searchString:string='';
+  selectedString:string='';
+  loadSpinner:boolean=false;
+  isDisable:boolean=true;
+  
+ 
+
 
   constructor(private countriesDService:CountriesDataService) { }
 
@@ -26,8 +33,10 @@ export class HomeComponent implements OnInit {
    // if(sessionStorage.getItem("type")===null){
      // location.href="/Login";
    // }
+
+   
    this.fetchAllData();
-  
+   
   
   
   }
@@ -38,13 +47,39 @@ export class HomeComponent implements OnInit {
 
   }
   fetchAllData():void{
-    this.countriesDService.getAllData().subscribe(countries=>this.countryFetchBySearch=countries);
-    this.countriesDService.getAllData().subscribe(countries=>this.countryFetch=countries);
+
     
-    
-    
-    
+    this.countriesDService.getAllData().subscribe(countries=>
+      
+      {if(countries){
+        
+       this.countryFetchBySearch=countries ;
+         this.hideSpinner();
+        
+       }
+       
+     }
+      );
+     
+    this.countriesDService.getAllData().subscribe(countries=> this.countryFetch=countries);
+      
+  
   }
+
+
+  hideSpinner():void{
+    
+    this.loadSpinner=true;
+    this.isDisable=false;
+    console.log("spinner false");
+  }
+  
+  showSpinner():void{
+    this.loadSpinner=false;
+    this.isDisable=true;
+    console.log("spinner true");
+  }
+
   moreOnClick():void{
 
     alert("hi");
@@ -70,8 +105,33 @@ export class HomeComponent implements OnInit {
 
   }
 
-  filterBySelect():void{
-    this.searchString='';
-    this.countryFetchBySearch=this.performFilter(this.searchString);
+  filterBySelect(value: any):void{
+    this.selectedString=value;
+    if(this.selectedString==='all'){
+      this.showSpinner();
+      this.fetchAllData();
+       }
+    else{
+      this.showSpinner();
+      this.getCountriesByRegion(this.selectedString);
+     
+    }
+    console.log(this.selectedString);
+  }
+
+  getCountriesByRegion(value:string):void{
+    this.countriesDService.getSelectedRegion(value).subscribe(count=>
+      {this.showSpinner();
+        if(count){
+          this.countryFetchBySearch=count ;
+          this.hideSpinner();
+       
+      }
+      
+    });
+    this.countriesDService.getSelectedRegion(value).subscribe(count=>this.countryFetch=count);
+    
+
+
   }
 }

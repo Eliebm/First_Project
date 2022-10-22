@@ -2,23 +2,32 @@ import { Injectable } from '@angular/core';
 import{HttpClient ,HttpErrorResponse}   from '@angular/common/http'
 import { Observable, tap , catchError, throwError} from 'rxjs';
 import { Icountries } from './account';
-import { JsonPipe } from '@angular/common';
+
 @Injectable({
   providedIn: 'root'
 })
 export class CountriesDataService {
   
    
-  private countriesUrl='https://restcountries.com/v3.1/all';
+  
   constructor(private http:HttpClient ) { }
   
   getAllData(): Observable<Icountries[]>{
     
-    return this.http.get<Icountries[]>(this.countriesUrl)
+    return this.http.get<Icountries[]>('https://restcountries.com/v3.1/all')
     .pipe(tap(data=> data)
     ,catchError(this.handleError));
     
   }
+
+getSelectedRegion(_region:string):Observable<Icountries[]>{
+  return this.http.get<Icountries[]>('https://restcountries.com/v3.1/region/'+_region)
+    .pipe(tap(data=> data)
+    ,catchError(this.handleError));
+
+
+}
+
  
   private handleError(err:HttpErrorResponse){
    let errorMessage='';
