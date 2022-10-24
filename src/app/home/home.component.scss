@@ -6,14 +6,15 @@
   width: 50px;
   height: 50px;
   margin: -75px 0 0 -75px;
-  border: 16px solid #f3f3f3;
+  border: 16px solid #0f037d2d;
   border-radius: 50%;
   border-top: 16px solid #0f037d;
-  animation: spin 2s linear infinite;
+  animation: spin 1.5s linear infinite;
   }
   
   @keyframes spin {
     0% { transform: rotate(0deg); }
+    50% { transform: rotate(180deg); }
     100% { transform: rotate(360deg); }
   }
 @media screen and (max-width: 500px) {
