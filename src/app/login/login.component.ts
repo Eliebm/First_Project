@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
         
         sessionStorage.setItem('accountType',this.storage);
         
-       location.href="/Signup";
+       location.href="/Home";
       }else{
        this.haserrorMsg=false;
        this.errorMsg="You have Entered an Invalid Name Or Password. Please Try Again.";

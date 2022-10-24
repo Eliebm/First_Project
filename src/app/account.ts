@@ -8,5 +8,26 @@ export interface IAccount {
 
 }
 
+export interface Icountries{
+   
+        name: {
+          common: string,
+          official: string,
+          
+        };
+        capital: string,
+        flags:{
+            png:string,
+            svg:string},
+        region: string,
+        subregion:string,
+        languages: [],
+        currencies: [],
+        timezones: string,
+        borders: [],
+        maps:{googleMaps:string,
+            openStreetMaps:string}
+      }
+
 
 
