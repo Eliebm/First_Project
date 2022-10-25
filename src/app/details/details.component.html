@@ -1,14 +1,42 @@
-<div class="title-bar">
-    <h2>Country name</h2>
+<div *ngFor="let country of countryData">
+<div class="title-bar" >
+    <h2>{{country.name.common}}</h2>
 </div>
-<div>
-    <img class="country-image" src="https://flagcdn.com/w320/lb.png">
-</div>
-<div class="button-list">
-    
-    <span class="span" >Gallery</span>
-    <span class="span" >Edit</span>
-    <span class="span span-back" >back</span>
-    
+<div class="container">
+    <div class="lef-section">
+    <div>
+    <img  class="country-image" src="{{country.flags.png}}">
+     </div>
+     <div>
+    <ul  class="button-list">
+    <li class="span" >Gallery</li>
+    <li class="span" >Edit</li>
+    <li class="span span-back" >back</li>
+    </ul>
 
   </div>
+  </div>
+
+  <!--Right Section-->
+
+  <div class="right-section">
+
+    <div class="border-country">
+        <legend>Border Countries</legend>
+         <ul class="border" >
+         <li class="border-list" aria-label="border countries" *ngFor="let bord of country.borders" (click)="getBorderCountries(bord)">{{bord}}</li></ul>
+          
+        <div><br></div>
+         <div id="map" class="map"  (load)="getmap(country.latlng)">
+            <legend>Location</legend>
+            
+        
+        </div>
+
+
+        </div>
+</div>
+
+
+</div>
+</div>

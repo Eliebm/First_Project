@@ -25,8 +25,10 @@ export interface Icountries{
         currencies: [],
         timezones: string,
         borders: [],
+        area:string;
         maps:{googleMaps:string,
-            openStreetMaps:string}
+            openStreetMaps:string},
+        latlng:[]
       }
 
 

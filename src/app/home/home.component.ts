@@ -1,6 +1,4 @@
 
-
-import { JsonPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { observable, Subject, Subscription } from 'rxjs';
 import { Icountries } from '../account';
