@@ -11,7 +11,7 @@
 </div>
 <div [hidden]="isDisable"  class="row-card">
     <div *ngFor="let country of countryFetchBySearch" class="card" >
-      <div class="card-body" (click)="moreOnClick()">
+      <div class="card-body" (click)="moreOnClick(country.name.official)">
         <img class="country-img" src="{{country.flags.png}}" aria-label="flag-image">
         <h3 aria-label="country name">{{country.name.common}}</h3>
         <p aria-label="country capital">{{country.capital}}</p>

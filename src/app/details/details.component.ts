@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Icountries } from '../account';
 import { CountriesDataService } from '../countries-data.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'pm-details',
@@ -10,14 +11,16 @@ import { CountriesDataService } from '../countries-data.service';
 })
 export class DetailsComponent implements OnInit {
   countryData:Icountries[]=[];
-  countryName:string="russia";
+  countryName:any;
   adminOptionList:any[]=[{"name":"Home","value":"http://localhost:4200/Home"},{"name":"Edit","value":""},{"name":"Gallery ","value":""}];
   userOptionList:any[]=[{"name":"Home","value":"http://localhost:4200/Home"},{"name":"Gallery ","value":""}];
   optionList:any[]=[];
-  constructor(private countryDService:CountriesDataService, private route:ActivatedRoute) { }
+
+
+  constructor(private countryDService:CountriesDataService, private route:ActivatedRoute,private location: Location) { }
 
   ngOnInit(): void {
-
+    this.countryName=this.route.snapshot.paramMap.get('countName');
     this.getAllDetails();
     this.optionList=this.adminOptionList.map(item=>item);
   }
@@ -33,7 +36,8 @@ getAllDetails():void{
   this.countryDService.getCountryDetailsByCode(code).subscribe(data=>this.countryData=data);
     
 }
-getmap(object:[]):void{
+goBack():void{
+ this.location.historyGo();
 
 }
 
