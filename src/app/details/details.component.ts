@@ -11,14 +11,15 @@ import { CountriesDataService } from '../countries-data.service';
 export class DetailsComponent implements OnInit {
   countryData:Icountries[]=[];
   countryName:string="russia";
-
-
+  adminOptionList:any[]=[{"name":"Home","value":"http://localhost:4200/Home"},{"name":"Edit","value":""},{"name":"Gallery ","value":""}];
+  userOptionList:any[]=[{"name":"Home","value":"http://localhost:4200/Home"},{"name":"Gallery ","value":""}];
+  optionList:any[]=[];
   constructor(private countryDService:CountriesDataService, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
 
     this.getAllDetails();
-    
+    this.optionList=this.adminOptionList.map(item=>item);
   }
   
 getAllDetails():void{

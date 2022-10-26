@@ -18,7 +18,7 @@
     background-color:rgba(121, 109, 249, 1);
     min-width: 400px;
     margin-top: 20px;
-    margin-left: 4em;
+    margin-left: 2em;
     
     border-radius: 50px;
     text-align:center;
@@ -31,7 +31,7 @@
     
     position:relative;
     
-    margin:20px 0 10px 11em;
+    margin:20px 0 10px 8em;
     width: 200px;
     height: 200px;
     border-radius: 300px;
@@ -42,13 +42,19 @@
   .button-list{
     position: relative;
     margin-top: 20px;
-    width: 50%;
+    width: 98%;
     padding-bottom: 30px;
-    margin-left: 5em;
+    margin-left: 2.1em;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    
 }
-
+.span:first-child:nth-last-child(n + 5) ~ li{
+      margin-right: 0.8em;
+        
+       }
+       
 
 
 }
@@ -84,20 +90,26 @@
     
         position:relative;
         
-        margin:50px 0 10px 42%;
+        margin:50px 0 10px 15em;
         width: 250px;
         height: 250px;
         border-radius: 300px;
         
       }    
-
+      .span:first-child:nth-last-child(n + 4),
+      .span:first-child:nth-last-child(n + 4) ~ li{
+        margin-right: 7.5em;
+        
+       }
+     
       .button-list {
         position:relative;
         display: flex;
         flex-direction: row;
-        margin:35px 0 10px 7em;
         flex-wrap: wrap;
-        margin-right: auto;
+        margin:2% 0 10px 7em;
+        
+        
         
       }
    
@@ -151,6 +163,12 @@
 
 .button-list{
   list-style: none;
+}
+
+a{
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
 }
 .span {
     padding:15px 25px 15px 25px;

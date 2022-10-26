@@ -9,8 +9,8 @@
      </div>
      <div>
     <ul  class="button-list">
-    <li class="span" >Gallery</li>
-    <li class="span" >Edit</li>
+    <li class="span" *ngFor="let option of optionList"><a href="{{option.value}}">{{option.name}}</a></li>
+    
     <li class="span span-back" >back</li>
     </ul>
 
@@ -27,15 +27,21 @@
          <li class="border-list" aria-label="border countries" *ngFor="let bord of country.borders" (click)="getBorderCountries(bord)">{{bord}}</li></ul>
           
         <div><br></div>
-         <div id="map" class="map"  (load)="getmap(country.latlng)">
+         
+        
+
+        </div>
+        
+        <div class="information">
+            <legend>Information</legend>
+            
+        </div>
+        <div id="map" class="map"  (load)="getmap(country.latlng)">
             <legend>Location</legend>
             
         
         </div>
-
-
-        </div>
-</div>
+  </div>
 
 
 </div>
