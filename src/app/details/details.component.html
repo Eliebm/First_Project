@@ -32,23 +32,23 @@
             <tbody>
                 <tr>
                     <td>Name</td>
-                    <td aria-label="name">{{country.name.common}}</td>
+                    <td aria-label="name" contenteditable='isEditable'>{{country.name.common}}</td>
                 </tr>
                 <tr>
                 <td>Official</td>
-                <td aria-label="official name">{{country.name.official}}</td>
+                <td aria-label="official name" contenteditable='isEditable'>{{country.name.official}}</td>
             </tr>
             <tr>
                 <td>Capital</td>
-                <td aria-label="official name">{{country.capital}}</td>
+                <td aria-label="capital name" contenteditable='isEditable'>{{country.capital}}</td>
             </tr>
             <tr>
                 <td>Region</td>
-                <td aria-label="Region">{{country.region}}</td>
+                <td aria-label="Region" contenteditable='isEditable'>{{country.region}}</td>
             </tr>
             <tr>
                 <td>SubRegion</td>
-                <td aria-label="SubRegion">{{country.subregion}}</td>
+                <td aria-label="SubRegion" contenteditable='isEditable'>{{country.subregion}}</td>
             </tr>
             <tr>
                 <td>Aria</td>
@@ -64,18 +64,18 @@
         
     </div>
     <div><br></div>
-    <div class="border-country">
-        <legend>Border Countries</legend>
-         <ul class="border" >
+    <div class="border-country" *ngIf="country.borders">
+        <legend >Border Countries</legend>
+         <ul class="border">
          <li class="border-list" aria-label="border countries" *ngFor="let bord of country.borders" (click)="getBorderCountries(bord)">{{bord}}</li></ul>
           
-        <div><br></div>
+        
          
         
 
         </div>
         
-        
+        <div><br></div>
         <div class="map"  >
             
             <legend>Location</legend>
