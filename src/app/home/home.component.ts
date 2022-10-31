@@ -28,9 +28,9 @@ export class HomeComponent implements OnInit {
   constructor(private countriesDService:CountriesDataService) { }
 
   ngOnInit(): void {
-   // if(sessionStorage.getItem("type")===null){
-     // location.href="/Login";
-   // }
+   if(sessionStorage.getItem("accountType")===null){
+      location.href="/Login";
+   }
 
    
    this.fetchAllData();
