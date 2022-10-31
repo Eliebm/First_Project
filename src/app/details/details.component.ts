@@ -15,14 +15,24 @@ export class DetailsComponent implements OnInit {
   adminOptionList:any[]=[{"name":"Home","value":"http://localhost:4200/Home"},{"name":"Edit","value":""},{"name":"Gallery ","value":""}];
   userOptionList:any[]=[{"name":"Home","value":"http://localhost:4200/Home"},{"name":"Gallery ","value":""}];
   optionList:any[]=[];
+  sessionData:any;
+
 
 
   constructor(private countryDService:CountriesDataService, private route:ActivatedRoute,private location: Location) { }
 
   ngOnInit(): void {
+    
+   this.sessionData=sessionStorage.getItem('accountType');
+   if(this.sessionData==='member'){
+    this.optionList=this.userOptionList.map(item=>item);
+
+   }else{this.optionList=this.adminOptionList.map(item=>item);}
+
+
     this.countryName=this.route.snapshot.paramMap.get('countName');
     this.getAllDetails();
-    this.optionList=this.adminOptionList.map(item=>item);
+    
   }
   
 getAllDetails():void{
