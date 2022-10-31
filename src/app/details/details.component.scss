@@ -1,0 +1,278 @@
+@media screen and (max-width: 500px){
+  .container{
+    display: flex;
+    flex-direction: column;
+  
+  }
+
+  .right-section{
+    position: relative;
+    min-width: 400px;
+    margin-left: 4em;
+    
+
+  }
+
+.title-bar{
+    height: 70px;
+    background-color:rgba(121, 109, 249, 1);
+    min-width: 400px;
+    margin-top: 20px;
+    margin-left: 2em;
+    
+    border-radius: 50px;
+    text-align:center;
+    padding-top: 1px;
+
+    
+      
+}
+.country-image{
+    
+    position:relative;
+    
+    margin:20px 0 10px 8em;
+    width: 200px;
+    height: 200px;
+    border-radius: 300px;
+    
+    
+  }
+
+  .button-list{
+    position: relative;
+    margin-top: 20px;
+    width: 98%;
+    padding-bottom: 30px;
+    margin-left: 2.1em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+}
+.span:first-child:nth-last-child(n + 5) ~ li{
+      margin-right: 0.8em;
+        
+       }
+       
+       table{
+
+        width: 98%;
+        
+       }
+
+}
+
+@media screen and (min-width:515px) and (max-width:1048px){
+  .container{
+    display: flex;
+    flex-direction: column;
+  
+  }  
+ 
+
+  .right-section{
+    position: relative;
+   margin:50px 0 0 6.5em;
+   width: 95%;
+   
+  }
+    .title-bar{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        margin:25px 100px 0 0;
+        height: 45px;
+        width: 78%;
+        background-color: rgba(121, 109, 249, 1);
+        border-radius: 50px;
+        margin-left: auto;
+        padding-bottom: 20px;
+      }
+      .country-image{
+    
+        position:relative;
+        
+        margin:50px 0 10px 15em;
+        width: 250px;
+        height: 250px;
+        border-radius: 300px;
+        
+      }    
+      .span:first-child:nth-last-child(n + 4),
+      .span:first-child:nth-last-child(n + 4) ~ li{
+        margin-right: 7.5em;
+        
+       }
+     
+      .button-list {
+        position:relative;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin:2% 0 10px 7em;
+        
+      }
+
+    table{
+     margin-left: 2em;
+     
+     width: 98%;
+     
+    }
+    
+      
+   
+}
+
+@media screen and (min-width:1050px) {
+
+    .title-bar{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        margin:20px 100px 0 0;
+        height: 45px;
+        width: 78%;
+        background-color: rgba(121, 109, 249, 1);
+        border-radius: 50px;
+        margin-left: auto;
+        padding-bottom: 20px;
+      }
+
+      .country-image{
+        
+        position:absolute;
+        top: 20px;
+        left: 120px;
+        width: 310px;
+        height: 310px;
+        border-radius: 100px;
+        
+        
+      }
+      .button-list {
+        
+        display: flex;
+        flex-direction: column;
+        margin-top: 300px;
+        margin-left: 9em;
+        flex-wrap: wrap;
+        margin-right: auto;
+        
+      }
+
+      .right-section{
+        margin-top: 55px;
+        margin-left: 10%;
+      }
+    table{
+      width: 75%;
+    }
+      
+}
+
+.button-list{
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+}
+.span {
+    padding:15px 25px 15px 25px;
+    
+    border-bottom: 1px solid blue;
+    color: white;
+    
+    text-align: center;
+    cursor: pointer;
+    width: 100px;
+    height: 25px;
+  }
+  .span:hover{
+    background-color:rgba(34, 7, 185, 0.847) ;
+  }
+  
+  
+  .span-back:hover{
+    background-color: rgb(255, 0, 0.715);
+  }
+
+h2{
+        
+    color: white;
+    
+}
+
+
+.container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+}
+
+
+
+.right-section{
+  
+  width:65%;
+  
+  position: relative;
+  
+}
+legend{
+  
+  color: rgb(235, 242, 248);
+  font-size: larger;
+  
+  margin: auto 0 15px 0;
+}
+
+.border{
+ 
+ list-style: none;
+ display:flex;
+ flex-direction: row;
+  order: 10;
+  flex: 0 1 auto;
+  flex-wrap: wrap;
+  height:43px;
+  
+ 
+
+}
+.border-list{
+   width:90px;
+   
+   margin: 2px;
+   border-left: 2px solid blue;
+   border-right:2px solid blue;
+   text-align: center;
+   padding-top:10px;
+   
+}
+.border-list:hover{
+  border:2px solid blue;
+}
+
+.map{
+ margin: 5px;
+}
+
+.info-row{
+  
+  
+  font-size: 20px;
+  font-weight:bold;
+}
+td{
+  color: blue;
+  text-align:justify
+  
+}

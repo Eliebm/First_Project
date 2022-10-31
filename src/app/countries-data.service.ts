@@ -28,6 +28,19 @@ getSelectedRegion(_region:string):Observable<Icountries[]>{
 
 }
 
+getCountryDetails(countryName:string):Observable<Icountries[]>{
+  return this.http.get<Icountries[]>('https://restcountries.com/v3.1/name/'+countryName)
+  .pipe(tap(data=> data)
+  ,catchError(this.handleError));
+
+}
+getCountryDetailsByCode(code:string):Observable<Icountries[]>{
+  return this.http.get<Icountries[]>('https://restcountries.com/v3.1/alpha/'+code)
+  .pipe(tap(data=> data)
+  ,catchError(this.handleError));
+
+
+}
  
   private handleError(err:HttpErrorResponse){
    let errorMessage='';

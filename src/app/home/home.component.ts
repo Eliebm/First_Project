@@ -1,6 +1,4 @@
 
-
-import { JsonPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { observable, Subject, Subscription } from 'rxjs';
 import { Icountries } from '../account';
@@ -80,9 +78,9 @@ export class HomeComponent implements OnInit {
     console.log("spinner true");
   }
 
-  moreOnClick():void{
+  moreOnClick(countName:string):void{
 
-    alert("hi");
+    location.href="http://localhost:4200/details/"+countName;
   }
   
   performFilter(filterBy:string):Icountries[]{

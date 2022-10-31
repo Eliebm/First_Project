@@ -21,12 +21,15 @@ export interface Icountries{
             svg:string},
         region: string,
         subregion:string,
-        languages: [],
+        languages:[],
         currencies: [],
         timezones: string,
         borders: [],
+        area:string;
         maps:{googleMaps:string,
-            openStreetMaps:string}
+             openStreetMaps:string},
+        latlng:[],
+        population:string
       }
 
 
