@@ -16,13 +16,14 @@ export class DetailsComponent implements OnInit {
   userOptionList:any[]=[{"name":"Home","value":"http://localhost:4200/Home"},{"name":"Gallery ","value":""}];
   optionList:any[]=[];
   sessionData:any;
+  isEditable:boolean=false;
 
 
 
   constructor(private countryDService:CountriesDataService, private route:ActivatedRoute,private location: Location) { }
 
   ngOnInit(): void {
-    
+
    this.sessionData=sessionStorage.getItem('accountType');
    if(this.sessionData==='member'){
     this.optionList=this.userOptionList.map(item=>item);
