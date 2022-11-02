@@ -1,0 +1,10 @@
+<div *ngFor="let country of countryData" class="card">
+    <div class="card-body" (click)="moreOnClick(country.name.official)">
+        <img class="country-img" src="{{country.flags.png}}" aria-label="flag-image">
+        <h3 aria-label="country name">{{country.name.common}}</h3>
+        <p aria-label="country capital">{{country.capital}}</p>
+        <p aria-label="country region">{{country.region}}</p>
+
+
+    </div>
+</div>

@@ -78,10 +78,6 @@ export class HomeComponent implements OnInit {
 
   }
 
-  moreOnClick(countName: string): void {
-
-    location.href = "http://localhost:4200/details/" + countName;
-  }
 
   performFilter(filterBy: string): ICountries[] {
 
@@ -112,7 +108,7 @@ export class HomeComponent implements OnInit {
       this.getCountriesByRegion(this.selectedString);
 
     }
-    console.log(this.selectedString);
+
   }
 
   getCountriesByRegion(value: string): void {

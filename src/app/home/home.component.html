@@ -4,7 +4,8 @@
   </div>
 
   <div class="row-searchbar">
-    <input class="searchbar" type="text" aria-label="searchbar" placeholder="Search..." name="searchString"
+
+    <input matInput class="searchbar" type="text" aria-label="searchbar" placeholder="Search..." name="searchString"
       (keyup)="filterBySearch($event)" [disabled]="isDisable">
 
     <mat-select class="select-region" [(value)]="selectedValue" aria-label="select"
@@ -16,16 +17,7 @@
 
   </div>
   <div [hidden]="isDisable" class="row-card">
-    <div *ngFor="let country of countryFetchBySearch" class="card">
-      <div class="card-body" (click)="moreOnClick(country.name.official)">
-        <img class="country-img" src="{{country.flags.png}}" aria-label="flag-image">
-        <h3 aria-label="country name">{{country.name.common}}</h3>
-        <p aria-label="country capital">{{country.capital}}</p>
-        <p aria-label="country region">{{country.region}}</p>
-
-
-      </div>
-    </div>
+    <pm-country-card [countryData]="countryFetchBySearch"></pm-country-card>
 
 
   </div>
