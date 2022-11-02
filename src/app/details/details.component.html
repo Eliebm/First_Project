@@ -1,89 +1,93 @@
 <div *ngFor="let country of countryData">
-<div class="title-bar" >
-    <h2>{{country.name.common}}</h2>
-</div>
-<div class="container">
-    <div class="lef-section">
-    <div>
-    <img  class="country-image" src="{{country.flags.png}}">
-     </div>
-     <div>
-    <ul  class="button-list">
-    <li class="span" *ngFor="let option of optionList"><a href="{{option.value}}">{{option.name}}</a></li>
-    
-    <li class="span span-back" (click)="goBack()" >back</li>
-    </ul>
-
-  </div>
-  </div>
-
-  <!--Right Section-->
-
-  <div class="right-section">
-
-    <div class="information">
-        <legend>Information</legend>
-        <div class="info-row">
-         <table>
-            <thead>
-                <th></th>
-                <th></th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Name</td>
-                    <td aria-label="name" contenteditable='isEditable'>{{country.name.common}}</td>
-                </tr>
-                <tr>
-                <td>Official</td>
-                <td aria-label="official name" contenteditable='isEditable'>{{country.name.official}}</td>
-            </tr>
-            <tr>
-                <td>Capital</td>
-                <td aria-label="capital name" contenteditable='isEditable'>{{country.capital}}</td>
-            </tr>
-            <tr>
-                <td>Region</td>
-                <td aria-label="Region" contenteditable='isEditable'>{{country.region}}</td>
-            </tr>
-            <tr>
-                <td>SubRegion</td>
-                <td aria-label="SubRegion" contenteditable='isEditable'>{{country.subregion}}</td>
-            </tr>
-            <tr>
-                <td>Aria</td>
-                <td aria-label="Area">{{country.area}}  KM</td>
-            </tr>
-            <tr>
-                <td>Population</td>
-                <td aria-label="population">{{country.population}}</td>
-            </tr>
-            </tbody>
-         </table>
-
-        
+    <div class="title-bar">
+        <h2>{{country.name.common}}</h2>
     </div>
-    <div><br></div>
-    <div class="border-country" *ngIf="country.borders">
-        <legend >Border Countries</legend>
-         <ul class="border">
-         <li class="border-list" aria-label="border countries" *ngFor="let bord of country.borders" (click)="getBorderCountries(bord)">{{bord}}</li></ul>
-          
-        
-         
-        
+    <div class="container">
+        <div class="lef-section">
+            <div>
+                <img class="country-image" src="{{country.flags.png}}">
+            </div>
+            <div>
+                <ul class="button-list">
+                    <li class="span" *ngFor="let option of optionList"><a href="{{option.value}}">{{option.name}}</a>
+                    </li>
+
+                    <li class="span span-back" (click)="goBack()">Back</li>
+                </ul>
+
+            </div>
+        </div>
+
+        <!--Right Section-->
+
+        <div class="right-section">
+
+            <div class="information">
+                <legend>Information</legend>
+                <div class="info-row">
+                    <table>
+                        <thead>
+                            <th></th>
+                            <th></th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Name</td>
+                                <td aria-label="name" contenteditable='isEditable'>{{country.name.common}}</td>
+                            </tr>
+                            <tr>
+                                <td>Official</td>
+                                <td aria-label="official name" contenteditable='isEditable'>{{country.name.official}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Capital</td>
+                                <td aria-label="capital name" contenteditable='isEditable'>{{country.capital}}</td>
+                            </tr>
+                            <tr>
+                                <td>Region</td>
+                                <td aria-label="Region" contenteditable='isEditable'>{{country.region}}</td>
+                            </tr>
+                            <tr>
+                                <td>SubRegion</td>
+                                <td aria-label="SubRegion" contenteditable='isEditable'>{{country.subregion}}</td>
+                            </tr>
+                            <tr>
+                                <td>Aria</td>
+                                <td aria-label="Area">{{country.area}} KM</td>
+                            </tr>
+                            <tr>
+                                <td>Population</td>
+                                <td aria-label="population">{{country.population}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                </div>
+                <div><br></div>
+                <div class="border-country" *ngIf="country.borders">
+                    <legend>Border Countries</legend>
+                    <ul class="border">
+                        <li class="border-list" aria-label="border countries" *ngFor="let bord of country.borders"
+                            (click)="getBorderCountries(bord)">{{bord}}</li>
+                    </ul>
+
+
+
+
+
+                </div>
+
+                <div><br></div>
+                <div class="map">
+
+                    <legend>Location</legend>
+                    <a href="{{country.maps.googleMaps}}" target="_blank">{{country.maps.googleMaps}}</a>
+
+                </div>
+            </div>
+
 
         </div>
-        
-        <div><br></div>
-        <div class="map"  >
-            
-            <legend>Location</legend>
-            <a href="{{country.maps.googleMaps}}" target="_blank">{{country.maps.googleMaps}}</a>
-        
-        </div>
-  </div>
-
-
-</div>
-</div>
+    </div>

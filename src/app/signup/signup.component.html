@@ -1,62 +1,82 @@
 <div class="container">
-<div class="section">
-    <h1>No Account ? Create One !</h1>
-    
-    </div>
-<div class="section-form">
-    <div class="free-trail">
-    <p aria-label="subscribe" ><b>Sign Up.</b> It's Free</p>
-    <a href="/Login">Login!</a>
-    </div>
+    <div class="section">
+        <h1>No Account ? Create One !</h1>
 
-<form [formGroup]="signupForm" >
-    <div class="form-group-type">
-        <h4 aria-label="Account type">Account : </h4>
-        <select class="form-control-select" name="typeSelector" aria-label="account type selector" formControlName="typeSelector" (change)="schange()" required>
-            <option value="admin">Administrator</option>
-            <option value="member">Member</option>
-        </select>
-        <pm-warning-svg-icon *ngIf="typeValid && typeValid.invalid && typeValid.touched" aria-label="warning icon"></pm-warning-svg-icon>
+    </div>
+    <div class="section-form">
+        <div class="free-trail">
+            <p aria-label="subscribe"><b>Sign Up.</b> It's Free</p>
+            <a href="/logIn">Login!</a>
         </div>
-    <div class="form-group">
-      <div class="input-icon">
-          <input class="form-control" type="text" id="firstname" name="firstname" aria-label="name" placeholder="First Name" formControlName="fname" >
-          <span *ngIf="fnameValid && fnameValid.invalid && fnameValid.touched"><pm-warning-svg-icon aria-label="warning icon"></pm-warning-svg-icon></span>
-        </div>
-      <label *ngIf="fnameValid && fnameValid.invalid && fnameValid.touched" for="firstname" >First Name cannot be empty </label>
+
+        <form [formGroup]="signupForm">
+            <div class="form-group-type">
+                <h4 aria-label="Account type">Account : </h4>
+                <select class="form-control-select" name="typeSelector" aria-label="account type selector"
+                    formControlName="typeSelector" (change)="schange()" required>
+                    <option value="admin">Administrator</option>
+                    <option value="member">Member</option>
+                </select>
+                <pm-warning-svg-icon *ngIf="typeValid && typeValid.invalid && typeValid.touched"
+                    aria-label="warning icon"></pm-warning-svg-icon>
+            </div>
+            <div class="form-group">
+                <div class="input-icon">
+                    <input class="form-control" type="text" id="firstname" name="firstname" aria-label="name"
+                        placeholder="First Name" formControlName="fname">
+                    <span *ngIf="fnameValid && fnameValid.invalid && fnameValid.touched">
+                        <pm-warning-svg-icon aria-label="warning icon"></pm-warning-svg-icon>
+                    </span>
+                </div>
+                <label *ngIf="fnameValid && fnameValid.invalid && fnameValid.touched" for="firstname">First Name cannot
+                    be empty </label>
+            </div>
+
+            <div class="form-group">
+                <div class="input-icon">
+                    <input class="form-control" type="text" id="lastname" name="lastname" aria-label="last-name"
+                        placeholder="Last Name" formControlName="lname">
+                    <span *ngIf="lnameValid && lnameValid.invalid && lnameValid.touched ">
+                        <pm-warning-svg-icon aria-label="warning icon"></pm-warning-svg-icon>
+                    </span>
+
+                </div>
+                <label *ngIf="lnameValid && lnameValid.invalid && lnameValid.touched " for="lastname">last Name cannot
+                    be empty </label>
+            </div>
+
+            <div class="form-group">
+                <div class="input-icon">
+                    <input class="form-control" type="email" id="email" name="email" placeholder="{{emailValue}}"
+                        aria-label="Email" (focus)="changeEmailValue('email@example/com')" formControlName="email">
+                    <span *ngIf=" emailValid && emailValid.invalid && (emailValid.dirty || emailValid.touched)">
+                        <pm-warning-svg-icon aria-label="warning icon"></pm-warning-svg-icon>
+                    </span>
+                </div>
+                <label *ngIf="emailValid && emailValid.invalid && (emailValid.dirty || emailValid.touched) "
+                    for="email">Looks like this is not an email </label>
+            </div>
+
+            <div class="form-group">
+                <div class="input-icon">
+                    <input class="form-control" type="password" id="password" name="password" placeholder="Password"
+                        aria-label="Password" formControlName="password">
+                    <span *ngIf="passwordValid && passwordValid.invalid && passwordValid.touched">
+                        <pm-warning-svg-icon aria-label="warning icon"></pm-warning-svg-icon>
+                    </span>
+                </div>
+                <label *ngIf="passwordValid && passwordValid.invalid && passwordValid.touched" for="password">Password
+                    cannot be empty </label>
+            </div>
+
+            <button aria-labelledby="send" class="submit-button" type="submit" [disabled]="!signupForm.valid"
+                (click)="submit()" aria-label="submit form">Create Account</button>
+
+            <div class="bottom-term">By clicking the button, you are agreeing to our <b class="bottom-term-bold">Terms
+                    and Services </b></div>
+
+        </form>
+
     </div>
-
-    <div class="form-group">
-        <div class="input-icon">
-           <input class="form-control" type="text" id="lastname" name="lastname" aria-label="last-name" placeholder="Last Name" formControlName="lname" >
-           <span *ngIf="lnameValid && lnameValid.invalid && lnameValid.touched "><pm-warning-svg-icon aria-label="warning icon"></pm-warning-svg-icon></span>
-
-           </div>
-         <label *ngIf="lnameValid && lnameValid.invalid && lnameValid.touched " for="lastname">last Name cannot be empty  </label>
-    </div>  
-
-    <div class="form-group">
-        <div class="input-icon">
-            <input  class="form-control" type="email"  id="email" name="email" placeholder="{{emailValue}}" aria-label="Email" (focus)="changeEmailValue('email@example/com')" formControlName="email">
-            <span *ngIf=" emailValid && emailValid.invalid && (emailValid.dirty || emailValid.touched)"><pm-warning-svg-icon aria-label="warning icon"></pm-warning-svg-icon></span>
-        </div>
-        <label *ngIf="emailValid && emailValid.invalid && (emailValid.dirty || emailValid.touched) " for="email">Looks like this is not an email  </label>
-    </div>
-
-    <div class="form-group">
-        <div class="input-icon">
-           <input class="form-control" type="password" id="password" name="password" placeholder="Password" aria-label="Password"  formControlName="password">
-           <span *ngIf="passwordValid && passwordValid.invalid && passwordValid.touched"><pm-warning-svg-icon aria-label="warning icon"></pm-warning-svg-icon></span>
-        </div>
-        <label *ngIf="passwordValid && passwordValid.invalid && passwordValid.touched" for="password">Password cannot be empty  </label>
-    </div>
-
-    <button aria-labelledby="send" class="submit-button" type="submit" [disabled]="!signupForm.valid"  (click)="submit()" aria-label="submit form">Create Account</button>
-    
-    <div class="bottom-term">By clicking the button, you are agreeing to our  <b class="bottom-term-bold">Terms and Services </b></div>
-    
-</form>
-
-</div>
 
 </div>

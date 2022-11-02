@@ -4,77 +4,77 @@ import { FormControl, FormGroup, NgModel, UntypedFormControl, Validators } from 
 
 @Component({
   selector: 'pm-login',
-  
+
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
 
 export class LoginComponent implements OnInit {
 
-  haserrorMsg:boolean=true;
-  errorMsg:string="";
-  storage:any;
-  
-  loginForm= new FormGroup({
-    name:new FormControl(null,[Validators.required]),
-    password:new FormControl(null,[Validators.required]),
-    type:new FormControl(null,[Validators.required])
+  haserrorMsg: boolean = true;
+  errorMsg: string = "";
+  storage: any;
 
-   });
-   get nameValid(){
-    
+  loginForm = new FormGroup({
+    name: new FormControl(null, [Validators.required]),
+    password: new FormControl(null, [Validators.required]),
+    type: new FormControl(null, [Validators.required])
+
+  });
+  get nameValid() {
+
     return this.loginForm.get('name');
   }
-  get passwordValid(){
-    
+  get passwordValid() {
+
     return this.loginForm.get('password');
   }
-  get typeValid(){
-    
+  get typeValid() {
+
     return this.loginForm.get('type');
-    
-    
+
+
   }
-  constructor( private accountserv:AccountService) {
-    
-   }
+  constructor(private accountserv: AccountService) {
+
+  }
 
   ngOnInit(): void {
-    
+
   }
-  ngOnDestroy(){
-    
+  ngOnDestroy() {
+
   }
-  
-  submit():void{
-    if(this.loginForm.invalid){
-      this.haserrorMsg=false;
-      this.errorMsg="there are items that require your attention !";
+
+  submit(): void {
+    if (this.loginForm.invalid) {
+      this.haserrorMsg = false;
+      this.errorMsg = "there are items that require your attention !";
     }
-    else{
-      
-      if(this.accountserv.getAccount(this.nameValid?.value,this.passwordValid?.value,this.typeValid?.value)===true){
-        this.storage=this.loginForm.get('type')?.value;
-        
-        sessionStorage.setItem('accountType',this.storage);
-        
-       location.href="/Home";
-      }else{
-       this.haserrorMsg=false;
-       this.errorMsg="You have Entered an Invalid Name Or Password. Please Try Again.";
-       
+    else {
+
+      if (this.accountserv.getAccount(this.nameValid?.value, this.passwordValid?.value, this.typeValid?.value) === true) {
+        this.storage = this.loginForm.get('type')?.value;
+
+        sessionStorage.setItem('accountType', this.storage);
+
+        location.href = "/home";
+      } else {
+        this.haserrorMsg = false;
+        this.errorMsg = "You have Entered an Invalid Name Or Password. Please Try Again.";
+
       }
     }
-   
-    
- 
+
+
+
   }
- 
-  clearErrorMessage():void{
-    this.haserrorMsg=true;
+
+  clearErrorMessage(): void {
+    this.haserrorMsg = true;
   }
 
 }
- 
+
 
 
