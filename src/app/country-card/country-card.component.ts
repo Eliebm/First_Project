@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { ICountries } from '../account';
 
 @Component({
@@ -8,13 +9,14 @@ import { ICountries } from '../account';
 })
 export class CountryCardComponent implements OnInit {
   @Input() countryData: ICountries[] = [];
+  private localUrl = environment.baseUrl;
   constructor() { }
 
   ngOnInit(): void {
   }
   moreOnClick(countName: string): void {
 
-    location.href = "http://localhost:4200/details/" + countName;
+    location.href = this.localUrl + "details/" + countName;
   }
 
 }

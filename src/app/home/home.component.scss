@@ -55,15 +55,15 @@
   }
 
   .searchbar {
-    min-width: 250px;
+    min-width: 200px;
 
 
   }
 
   .select-region {
     min-width: 200px;
-    margin-left: 1em;
-    margin-bottom: 25px;
+
+    margin-bottom: 15px;
   }
 
   .button-logout {
@@ -73,7 +73,7 @@
 
 }
 
-@media screen and (min-width:700px) and (max-width:1150px) {
+@media screen and (min-width:700px) and (max-width:1023px) {
   .row-card {
     align-items: center;
     margin-left: auto;
@@ -92,12 +92,32 @@
 
   }
 
+  .button-logout {
+    margin-left: 33%;
+  }
+}
 
-
-
+@media screen and (min-width:1024px) {
+  .button-logout {
+    margin-top: 20px;
+    margin-left: 30%;
+  }
 }
 
 
+
+
+
+.select-region {
+  background-color: aliceblue;
+  max-height: 50px;
+  margin: 8px 0 0 15px;
+
+}
+
+::ng-deep.mat-select-arrow {
+  display: none;
+}
 
 
 
@@ -133,35 +153,17 @@
 .searchbar {
   background-color: rgb(255, 255, 255);
   width: 40%;
-  height: 30px;
-  font-size: 17px;
-  border: 2px solid rgba(0, 0, 255, 0.568);
-  border-radius: 10px;
-  margin: 25px 0 25px 25px;
+  height: 50px;
+  margin: 8px 0 25px 15px;
 }
 
-.select-region {
 
-  font-size: 18px;
-  width: 200px;
-  border-radius: 5px;
-  height: 24px;
-  background-color: aliceblue;
-  align-self: center;
 
-  margin-left: 10px;
-  text-align: center;
-  padding-top: 0.5rem;
-}
 
-::ng-deep.mat-select-arrow {
-  display: none;
-}
 
 .button-logout {
   width: 100px;
-  margin-top: 20px;
-  margin-left: 30%;
+
   height: 40px;
 
 }

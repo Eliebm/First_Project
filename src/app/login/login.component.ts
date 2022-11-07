@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../account.service';
-import { FormControl, FormGroup, NgModel, UntypedFormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'pm-login',
-
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
 
 export class LoginComponent implements OnInit {
-
+  private localUrl = environment.baseUrl;
   haserrorMsg: boolean = true;
   errorMsg: string = "";
   storage: any;
@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
 
         sessionStorage.setItem('accountType', this.storage);
 
-        location.href = "/home";
+        location.href = this.localUrl + "home";
       } else {
         this.haserrorMsg = false;
         this.errorMsg = "You have Entered an Invalid Name Or Password. Please Try Again.";

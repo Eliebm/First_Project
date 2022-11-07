@@ -4,21 +4,25 @@
   </div>
 
   <div class="row-searchbar">
-
-    <input matInput class="searchbar" type="text" aria-label="searchbar" placeholder="Search..." name="searchString"
-      (keyup)="filterBySearch($event)" [disabled]="isDisable">
-
-    <mat-select class="select-region" [(value)]="selectedValue" aria-label="select"
-      (selectionChange)="filterBySelect(selectedValue)" [disabled]="isDisable">
-      <mat-option *ngFor="let reg of regionSearch" value="{{reg.val}}">{{reg.name}}</mat-option>
-    </mat-select>
+    <mat-form-field class="searchbar" appearance="fill">
+      <mat-label>Search...</mat-label>
+      <input matInput type="text" aria-label="searchbar" name="searchString" (keyup)="filterBySearch($event)"
+        [disabled]="isDisable">
+    </mat-form-field>
+    <mat-form-field class="select-region" appearance="fill">
+      <mat-label>Select an option</mat-label>
+      <mat-select [(value)]="selectedValue" aria-label="select region" (selectionChange)="filterBySelect(selectedValue)"
+        [disabled]="isDisable">
+        <mat-option *ngFor="let reg of regionSearch" value="{{reg.val}}">{{reg.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
     <button mat-raised-button color="warn" class="button-logout" aria-label="logout-button"
       (click)="logoutClick()">Logout</button>
 
   </div>
   <div [hidden]="isDisable" class="row-card">
-    <pm-country-card [countryData]="countryFetchBySearch"></pm-country-card>
 
+    <pm-country-card [countryData]="countryFetchBySearch"></pm-country-card>
 
   </div>
 

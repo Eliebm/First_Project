@@ -1,6 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
-import { observable, Subject, Subscription } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { ICountries } from '../account';
 import { CountriesDataService } from '../countries-data.service';
 
@@ -12,6 +12,7 @@ import { CountriesDataService } from '../countries-data.service';
 })
 
 export class HomeComponent implements OnInit {
+  private localUrl = environment.baseUrl;
   regionSearch: any[] = [{ "val": "all", "name": "All Regions" }, { "val": "Africa", "name": "Africa" }, { "val": "Americas", "name": "Americas" },
   { "val": "Asia", "name": "Asia" }, { "val": "Europe", "name": "Europe" }, { "val": "Oceania", "name": "Oceania" }]
 
@@ -22,6 +23,7 @@ export class HomeComponent implements OnInit {
   loadSpinner: boolean = false;
   isDisable: boolean = true;
   selectedValue = 'all';
+
 
 
 
@@ -41,7 +43,7 @@ export class HomeComponent implements OnInit {
   }
 
   logoutClick(): void {
-    location.href = "/logIn";
+    location.href = this.localUrl + "logIn";
     sessionStorage.clear;
 
   }
@@ -102,6 +104,8 @@ export class HomeComponent implements OnInit {
     if (this.selectedString === 'all') {
       this.showSpinner();
       this.fetchAllData();
+    } else if (this.selectedString === undefined) {
+
     }
     else {
       this.showSpinner();
