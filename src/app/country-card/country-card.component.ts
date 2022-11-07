@@ -9,14 +9,14 @@ import { ICountries } from '../account';
 })
 export class CountryCardComponent implements OnInit {
   @Input() countryData: ICountries[] = [];
-  private localUrl = environment.baseUrl;
+  private _localUrl = environment.baseUrl;
   constructor() { }
 
   ngOnInit(): void {
   }
   moreOnClick(countName: string): void {
 
-    location.href = this.localUrl + "details/" + countName;
+    location.href = this._localUrl + "details/" + countName;
   }
 
 }
