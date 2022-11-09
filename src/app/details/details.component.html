@@ -11,7 +11,8 @@
                 <ul class="button-list">
                     <li class="span"><a href="/home">Home</a>
                     </li>
-                    <li class="span" *ngFor="let option of optionList" (click)="option.value">{{option.name}}
+                    <li class="span" *ngFor="let option of optionList" (click)="checkButtonStatus(option.value)">
+                        {{option.name}}
                     </li>
 
                     <li class="span span-back" (click)="returnToLogIn()">Logout</li>
@@ -38,7 +39,7 @@
                                 <td aria-label="name" contenteditable='isEditable'>{{countryData[0].name.common}}</td>
                             </tr>
                             <tr>
-                                <td>Official</td>
+                                <td>Official Name</td>
                                 <td aria-label="official name" contenteditable='isEditable'>
                                     {{countryData[0].name.official}}
                                 </td>

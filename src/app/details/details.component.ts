@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { ICountries } from '../account';
 import { CountriesDataService } from '../countries-data.service';
 import { Location } from '@angular/common';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
+
 import { environment } from 'src/environments/environment';
+import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 
 @Component({
   selector: 'pm-details',
@@ -11,19 +14,21 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./details.component.scss']
 
 })
+
 export class DetailsComponent implements OnInit {
   private _localUrl = environment.baseUrl;
   countryData: ICountries[] = [];
   countryName: any;
-  adminOptionList: any[] = [{ "name": "Edit", "value": "" }, { "name": "Gallery ", "value": "" }];
-  userOptionList: any[] = [{ "name": "Gallery ", "value": "" }];
+  adminOptionList: any[] = [{ "name": "Edit", "value": "edit" }, { "name": "Gallery ", "value": "gallery" }];
+  userOptionList: any[] = [{ "name": "Gallery ", "value": "gallery" }];
   optionList: any[] = [];
   sessionData: any;
   isEditable: boolean = false;
 
 
 
-  constructor(private _countryDService: CountriesDataService, private _route: ActivatedRoute, private _location: Location) { }
+
+  constructor(private _countryDService: CountriesDataService, private _route: ActivatedRoute, private _location: Location, public dialog: MatDialog) { }
 
   ngOnInit(): void {
 
@@ -36,6 +41,7 @@ export class DetailsComponent implements OnInit {
 
 
     this.countryName = this._route.snapshot.paramMap.get('countName');
+
     this.getAllDetails();
 
   }
@@ -56,8 +62,27 @@ export class DetailsComponent implements OnInit {
     sessionStorage.clear();
   }
 
+  openEditDialog(): void {
+    console.log("dialog opened");
+    const dialogRef = this.dialog.open(EditDialogComponent, {
+      data: this.countryData,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+
+    });
+  }
 
 
-
-
+  checkButtonStatus(buttonValue: string) {
+    if (buttonValue === "edit") {
+      this.openEditDialog();
+    } else {
+      console.log("gallery");
+    }
+  }
 }
+
+
+
