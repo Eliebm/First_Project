@@ -15,8 +15,8 @@ export class DetailsComponent implements OnInit {
   private _localUrl = environment.baseUrl;
   countryData: ICountries[] = [];
   countryName: any;
-  adminOptionList: any[] = [{ "name": "Home", "value": this._localUrl + "home" }, { "name": "Edit", "value": "" }, { "name": "Gallery ", "value": "" }];
-  userOptionList: any[] = [{ "name": "Home", "value": this._localUrl + "home" }, { "name": "Gallery ", "value": "" }];
+  adminOptionList: any[] = [{ "name": "Edit", "value": "" }, { "name": "Gallery ", "value": "" }];
+  userOptionList: any[] = [{ "name": "Gallery ", "value": "" }];
   optionList: any[] = [];
   sessionData: any;
   isEditable: boolean = false;
@@ -28,6 +28,7 @@ export class DetailsComponent implements OnInit {
   ngOnInit(): void {
 
     this.sessionData = sessionStorage.getItem('accountType');
+
     if (this.sessionData === 'member') {
       this.optionList = this.userOptionList.map(item => item);
 
@@ -50,8 +51,9 @@ export class DetailsComponent implements OnInit {
     this._countryDService.getCountryDetailsByCode(code).subscribe(data => this.countryData = data);
 
   }
-  goBack(): void {
-    this._location.back();
+  returnToLogIn(): void {
+    location.href = this._localUrl + 'logIn';
+    sessionStorage.clear();
   }
 
 

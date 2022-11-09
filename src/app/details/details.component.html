@@ -9,10 +9,12 @@
             </div>
             <div>
                 <ul class="button-list">
-                    <li class="span" *ngFor="let option of optionList"><a href="{{option.value}}">{{option.name}}</a>
+                    <li class="span"><a href="/home">Home</a>
+                    </li>
+                    <li class="span" *ngFor="let option of optionList" (click)="option.value">{{option.name}}
                     </li>
 
-                    <li class="span span-back" routerLink="../" (click)="goBack()">Back</li>
+                    <li class="span span-back" (click)="returnToLogIn()">Logout</li>
                 </ul>
 
             </div>
