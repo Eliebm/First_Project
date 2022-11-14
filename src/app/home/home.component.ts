@@ -1,7 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
-import { observable, Subject, Subscription } from 'rxjs';
-import { Icountries } from '../account';
+import { environment } from 'src/environments/environment';
+import { ICountries } from '../account';
 import { CountriesDataService } from '../countries-data.service';
 
 
@@ -12,123 +12,121 @@ import { CountriesDataService } from '../countries-data.service';
 })
 
 export class HomeComponent implements OnInit {
-  regionSearch:any[]=[{"val":"all","name":"All Region"},{"val":"Africa","name":"Africa"},{"val":"Americas","name":"Americas"},
-  {"val":"Asia","name":"Asia"},{"val":"Europe","name":"Europe"},{"val":"Oceania","name":"Oceania"}]
-  
-  countryFetch:Icountries[]=[];
-  countryFetchBySearch:any[]=[];
-  searchString:string='';
-  selectedString:string='';
-  loadSpinner:boolean=false;
-  isDisable:boolean=true;
-  
- 
+  private localUrl = environment.baseUrl;
+  regionSearch: any[] = [{ "val": "all", "name": "All Regions" }, { "val": "Africa", "name": "Africa" }, { "val": "Americas", "name": "Americas" },
+  { "val": "Asia", "name": "Asia" }, { "val": "Europe", "name": "Europe" }, { "val": "Oceania", "name": "Oceania" }]
+
+  countryFetch: ICountries[] = [];
+  countryFetchBySearch: any[] = [];
+  searchString: string = '';
+  selectedString: string = '';
+  loadSpinner: boolean = false;
+  isDisable: boolean = true;
+  selectedValue = 'all';
 
 
-  constructor(private countriesDService:CountriesDataService) { }
+
+
+
+  constructor(private countriesDService: CountriesDataService) { }
 
   ngOnInit(): void {
-   // if(sessionStorage.getItem("type")===null){
-     // location.href="/Login";
-   // }
-
-   
-   this.fetchAllData();
-   
-  
-  
-  }
-
-  logoutClick():void{
-  location.href="/Login";
-  sessionStorage.clear;
-
-  }
-  fetchAllData():void{
-
-    
-    this.countriesDService.getAllData().subscribe(countries=>
-      
-      {if(countries){
-        
-       this.countryFetchBySearch=countries ;
-         this.hideSpinner();
-        
-       }
-       
-     }
-      );
-     
-    this.countriesDService.getAllData().subscribe(countries=> this.countryFetch=countries);
-      
-  
-  }
+    // if (sessionStorage.getItem("accountType") === null) {
+    //   location.href = "/logIn";
+    //  }
 
 
-  hideSpinner():void{
-    
-    this.loadSpinner=true;
-    this.isDisable=false;
-    console.log("spinner false");
-  }
-  
-  showSpinner():void{
-    this.loadSpinner=false;
-    this.isDisable=true;
-    console.log("spinner true");
-  }
+    this.fetchAllData();
 
-  moreOnClick(countName:string):void{
 
-    location.href="http://localhost:4200/details/"+countName;
-  }
-  
-  performFilter(filterBy:string):Icountries[]{
-    
-    filterBy=filterBy.toLocaleLowerCase();
-    
-    return this.countryFetch.filter((country:Icountries)=>country.name.common.toLocaleLowerCase().includes(filterBy))
 
   }
 
-  filterBySearch(event: any){
-    this.searchString= event.target.value;
-    console.log(this.searchString);
-    if(this.searchString ==='')
-    {
-     
-      this.countryFetchBySearch=this.performFilter(this.searchString);
+  logoutClick(): void {
+    location.href = this.localUrl + "logIn";
+    sessionStorage.clear;
+
+  }
+  fetchAllData(): void {
+
+
+    this.countriesDService.getAllData().subscribe(countries => {
+      if (countries) {
+
+        this.countryFetchBySearch = countries;
+        this.hideSpinner();
+
+      }
+
     }
-    this.countryFetchBySearch=this.performFilter(this.searchString);
+    );
+
+    this.countriesDService.getAllData().subscribe(countries => this.countryFetch = countries);
+
 
   }
 
-  filterBySelect(value: any):void{
-    this.selectedString=value;
-    if(this.selectedString==='all'){
+
+  hideSpinner(): void {
+
+    this.loadSpinner = true;
+    this.isDisable = false;
+
+  }
+
+  showSpinner(): void {
+    this.loadSpinner = false;
+    this.isDisable = true;
+
+  }
+
+
+  performFilter(filterBy: string): ICountries[] {
+
+    filterBy = filterBy.toLocaleLowerCase();
+
+    return this.countryFetch.filter((country: ICountries) => country.name.common.toLocaleLowerCase().includes(filterBy))
+
+  }
+
+  filterBySearch(event: any) {
+    this.searchString = event.target.value;
+    if (this.searchString === '') {
+
+      this.countryFetchBySearch = this.performFilter(this.searchString);
+    }
+    this.countryFetchBySearch = this.performFilter(this.searchString);
+
+  }
+
+  filterBySelect(value: any): void {
+    this.selectedString = value;
+    if (this.selectedString === 'all') {
       this.showSpinner();
       this.fetchAllData();
-       }
-    else{
+    } else if (this.selectedString === undefined) {
+
+    }
+    else {
       this.showSpinner();
       this.getCountriesByRegion(this.selectedString);
-     
+
     }
-    console.log(this.selectedString);
+
   }
 
-  getCountriesByRegion(value:string):void{
-    this.countriesDService.getSelectedRegion(value).subscribe(count=>
-      {this.showSpinner();
-        if(count){
-          this.countryFetchBySearch=count ;
-          this.hideSpinner();
-       
+  getCountriesByRegion(value: string): void {
+    this.countriesDService.getSelectedRegion(value).subscribe(count => {
+      this.showSpinner();
+      if (count) {
+        this.countryFetchBySearch = count;
+        this.hideSpinner();
+
       }
-      
+
     });
-    this.countriesDService.getSelectedRegion(value).subscribe(count=>this.countryFetch=count);
-    
+    this.countriesDService.getSelectedRegion(value).subscribe(count => this.countryFetch = count);
+
 
 
   }

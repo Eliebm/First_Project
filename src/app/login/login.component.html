@@ -1,29 +1,32 @@
-
 <div class="container">
     <div class="alert" [hidden]='haserrorMsg'>
         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
         {{errorMsg}}
-      </div> 
+    </div>
     <div>
-        
-    
-    <form id='frame1' class='frame1' [formGroup]="loginForm">
-        <h1>LOGIN</h1>
-        <div class="radio">
-            <input class="radio-input" type="radio" name="type" value="admin" id="Admin" aria-label="type of user" (change)="clearErrorMessage()" formControlName="type" >
-            <label class="radio-label" for="Admin" aria-label="admin">Administrator</label>
-            <input class="radio-input" type="radio" name="type" value="member" id="Member" aria-label="type of user" (change)="clearErrorMessage()" formControlName="type" >
-            <label class="radio-label" for="Member" aria-label="member">Member</label>
-        </div>
-            <input id='username' class='form-control' type='text' placeholder='User Name' formControlName="name" aria-label="user input" (change)="clearErrorMessage()" />
-            <input id='password' class='form-control' type='password' placeholder='Password' formControlName="password" aria-label="password input" (change)="clearErrorMessage()" />
-            
-            <button type="button"  class='rectangle4' aria-label="login button " (click)="submit()">LOGIN</button>
+
+
+        <form id='frame1' class='frame1' [formGroup]="loginForm">
+            <h1>LOGIN</h1>
+            <div class="radio">
+                <input class="radio-input" type="radio" name="type" value="admin" id="Admin" aria-label="type of user"
+                    (change)="clearErrorMessage()" formControlName="type">
+                <label class="radio-label" for="Admin" aria-label="admin">Administrator</label>
+                <input class="radio-input" type="radio" name="type" value="member" id="Member" aria-label="type of user"
+                    (change)="clearErrorMessage()" formControlName="type">
+                <label class="radio-label" for="Member" aria-label="member">Member</label>
+            </div>
+            <input id='username' class='form-control' type='text' placeholder='User Name' formControlName="name"
+                aria-label="user input" (change)="clearErrorMessage()" />
+            <input id='password' class='form-control' type='password' placeholder='Password' formControlName="password"
+                aria-label="password input" (change)="clearErrorMessage()" />
+
+            <button type="button" class='rectangle4' aria-label="login button " (click)="submit()">LOGIN</button>
             <div class="signup">
-                <p>No Account ? <a routerLink="/Signup">SignUp</a></p>
-               </div>
-            
+                <p>No Account ? <a routerLink="/signUp">SignUp</a></p>
+            </div>
+
         </form>
     </div>
-        
+
 </div>
