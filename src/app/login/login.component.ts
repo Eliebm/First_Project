@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../account.service';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { environment } from 'src/environments/environment';
+
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'pm-login',
@@ -10,17 +13,19 @@ import { environment } from 'src/environments/environment';
 })
 
 export class LoginComponent implements OnInit {
-  private localUrl = environment.baseUrl;
-  haserrorMsg: boolean = true;
-  errorMsg: string = "";
+  private _localUrl = environment.baseUrl;
   storage: any;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+
 
   loginForm = new FormGroup({
     name: new FormControl(null, [Validators.required]),
     password: new FormControl(null, [Validators.required]),
-    type: new FormControl(null, [Validators.required])
+    type: new FormControl('', [Validators.required])
 
   });
+
   get nameValid() {
 
     return this.loginForm.get('name');
@@ -35,7 +40,8 @@ export class LoginComponent implements OnInit {
 
 
   }
-  constructor(private accountserv: AccountService) {
+
+  constructor(private accountserv: AccountService, private _snackBar: MatSnackBar) {
 
   }
 
@@ -48,8 +54,8 @@ export class LoginComponent implements OnInit {
 
   submit(): void {
     if (this.loginForm.invalid) {
-      this.haserrorMsg = false;
-      this.errorMsg = "there are items that require your attention !";
+      this.openSnackBar("There Are Items That require your attention !");
+
     }
     else {
 
@@ -58,10 +64,10 @@ export class LoginComponent implements OnInit {
 
         sessionStorage.setItem('accountType', this.storage);
 
-        location.href = this.localUrl + "home";
+        location.href = this._localUrl + "home";
       } else {
-        this.haserrorMsg = false;
-        this.errorMsg = "You have Entered an Invalid Name Or Password. Please Try Again.";
+        this.openSnackBar("You have Entered an Invalid Name Or Password. Please Try Again.");
+
 
       }
     }
@@ -71,9 +77,14 @@ export class LoginComponent implements OnInit {
   }
 
   clearErrorMessage(): void {
-    this.haserrorMsg = true;
+    this._snackBar.dismiss();
   }
-
+  openSnackBar(msg: string): void {
+    this._snackBar.open(msg, 'Ok', {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+    });
+  }
 }
 
 

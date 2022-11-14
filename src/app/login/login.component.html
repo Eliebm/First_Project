@@ -1,27 +1,44 @@
 <div class="container">
-    <div class="alert" [hidden]='haserrorMsg'>
-        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-        {{errorMsg}}
-    </div>
+
     <div>
 
 
         <form id='frame1' class='frame1' [formGroup]="loginForm">
             <h1>LOGIN</h1>
-            <div class="radio">
-                <input class="radio-input" type="radio" name="type" value="admin" id="Admin" aria-label="type of user"
-                    (change)="clearErrorMessage()" formControlName="type">
-                <label class="radio-label" for="Admin" aria-label="admin">Administrator</label>
-                <input class="radio-input" type="radio" name="type" value="member" id="Member" aria-label="type of user"
-                    (change)="clearErrorMessage()" formControlName="type">
-                <label class="radio-label" for="Member" aria-label="member">Member</label>
-            </div>
-            <input id='username' class='form-control' type='text' placeholder='User Name' formControlName="name"
-                aria-label="user input" (change)="clearErrorMessage()" />
-            <input id='password' class='form-control' type='password' placeholder='Password' formControlName="password"
-                aria-label="password input" (change)="clearErrorMessage()" />
 
-            <button type="button" class='rectangle4' aria-label="login button " (click)="submit()">LOGIN</button>
+            <mat-radio-group color="warn" class="radio" aria-labelledby="example-radio-group-label"
+                formControlName="type" (change)="clearErrorMessage()">
+
+                <mat-radio-button class="radio-input admin" name="accounttype" value="admin" aria-label="type of user">
+                    Administrator
+
+                </mat-radio-button>
+                <mat-radio-button class="radio-input member" name="accounttype" value="member"
+                    aria-label="type of user">Member</mat-radio-button>
+
+            </mat-radio-group>
+
+            <mat-form-field class="form-control" appearance="fill">
+                <mat-label>Name </mat-label>
+                <input matInput type='text' placeholder="Ex. Name" formControlName="name" (click)="clearErrorMessage()"
+                    aria-label="user input" autocomplete="off">
+                <mat-error *ngIf="nameValid && nameValid.hasError('required')">
+                    Name is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="form-control" appearance="fill">
+                <mat-label>Password </mat-label>
+                <input matInput type='password' formControlName="password" aria-label="password input"
+                    (click)="clearErrorMessage()">
+                <mat-error *ngIf="passwordValid && passwordValid.hasError('required')">
+                    Password is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+
+            <button mat-raised-button aria-label="login button " color="primary" [disabled]="!loginForm.valid"
+                (click)="submit()">LOGIN</button>
             <div class="signup">
                 <p>No Account ? <a routerLink="/signUp">SignUp</a></p>
             </div>
