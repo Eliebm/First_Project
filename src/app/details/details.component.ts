@@ -23,9 +23,6 @@ export class DetailsComponent implements OnInit {
   userOptionList: any[] = [{ "name": "Gallery ", "value": "gallery" }];
   optionList: any[] = [];
   sessionData: any;
-  isEditable: boolean = false;
-
-
 
 
   constructor(private _countryDService: CountriesDataService, private _route: ActivatedRoute, private _location: Location, public dialog: MatDialog) { }
@@ -63,15 +60,11 @@ export class DetailsComponent implements OnInit {
   }
 
   openEditDialog(): void {
-    console.log("dialog opened");
+
     const dialogRef = this.dialog.open(EditDialogComponent, {
       data: this.countryData,
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-
-    });
   }
 
 
