@@ -18,6 +18,9 @@ import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 export class DetailsComponent implements OnInit {
   private _localUrl = environment.baseUrl;
   countryData: ICountries[] = [];
+  borderCountryName: string = '';
+  dataOfAllCountries: ICountries[] = [];
+  dataOfBorderCountry: ICountries[] = [];
   countryName: any;
   adminOptionList: any[] = [{ "name": "Edit", "value": "edit" }, { "name": "Gallery ", "value": "gallery" }];
   userOptionList: any[] = [{ "name": "Gallery ", "value": "gallery" }];
@@ -28,6 +31,8 @@ export class DetailsComponent implements OnInit {
   constructor(private _countryDService: CountriesDataService, private _route: ActivatedRoute, private _location: Location, public dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this._countryDService.getAllData().subscribe(countries => this.dataOfAllCountries = countries);
+
 
     this.sessionData = sessionStorage.getItem('accountType');
 
@@ -66,7 +71,10 @@ export class DetailsComponent implements OnInit {
     });
 
   }
-
+  getNameOfBorderCountry(code: string): void {
+    this.dataOfBorderCountry = this.dataOfAllCountries.filter((country: ICountries) => country.cca3.includes(code));
+    this.borderCountryName = this.dataOfBorderCountry[0].name.common;
+  }
 
   checkButtonStatus(buttonValue: string) {
     if (buttonValue === "edit") {
