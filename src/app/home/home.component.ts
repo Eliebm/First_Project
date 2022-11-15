@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
   selectedString: string = '';
   loadSpinner: boolean = false;
   isDisable: boolean = true;
-  selectedValue = 'all';
+  selectedValue = '';
 
 
 

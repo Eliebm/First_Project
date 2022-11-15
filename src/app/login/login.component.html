@@ -18,7 +18,7 @@
 
             </mat-radio-group>
 
-            <mat-form-field class="form-control" appearance="fill">
+            <mat-form-field class="form-control" appearance="legacy">
                 <mat-label>Name </mat-label>
                 <input matInput type='text' placeholder="Ex. Name" formControlName="name" (click)="clearErrorMessage()"
                     aria-label="user input" autocomplete="off">
@@ -27,7 +27,7 @@
                 </mat-error>
             </mat-form-field>
 
-            <mat-form-field class="form-control" appearance="fill">
+            <mat-form-field class="form-control" appearance="legacy">
                 <mat-label>Password </mat-label>
                 <input matInput type='password' formControlName="password" aria-label="password input"
                     (click)="clearErrorMessage()">

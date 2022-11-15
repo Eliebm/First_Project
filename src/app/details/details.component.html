@@ -95,7 +95,7 @@
                         <li class="border-list" aria-label="border countries"
                             *ngFor="let borderCode of countryData[0].borders"
                             (click)="getDetailsOfBorderCountry(borderCode)"
-                            (mouseenter)="getNameOfBorderCountry(borderCode)" #tooltip="matTooltip"
+                            (mouseenter)="getNameOfBorderCountry(borderCode)" matTooltipClass="tooltip"
                             matTooltip={{borderCountryName}} matTooltipPosition="below">
                             {{borderCode}}</li>
                     </ul>

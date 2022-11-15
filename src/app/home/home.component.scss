@@ -109,18 +109,17 @@
 
 
 .select-region {
-  background-color: aliceblue;
+  font-size: 17px;
   max-height: 50px;
   margin: 8px 0 0 15px;
+
 
 }
 
 ::ng-deep.mat-select-arrow {
   display: none;
+
 }
-
-
-
 
 
 .container {
@@ -151,7 +150,7 @@
 }
 
 .searchbar {
-  background-color: rgb(255, 255, 255);
+  font-size: 17px;
   width: 40%;
   height: 50px;
   margin: 8px 0 25px 15px;

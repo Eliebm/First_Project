@@ -4,13 +4,13 @@
   </div>
 
   <div class="row-searchbar">
-    <mat-form-field class="searchbar" appearance="fill">
+    <mat-form-field class="searchbar" appearance="legacy">
       <mat-label>Search...</mat-label>
       <input matInput type="text" aria-label="searchbar" name="searchString" (keyup)="filterBySearch($event)"
         [disabled]="isDisable">
     </mat-form-field>
-    <mat-form-field class="select-region" appearance="fill">
-      <mat-label>Select an option</mat-label>
+    <mat-form-field class="select-region" appearance="legacy">
+      <mat-label>Select Region</mat-label>
       <mat-select [(value)]="selectedValue" aria-label="select region" (selectionChange)="filterBySelect(selectedValue)"
         [disabled]="isDisable">
         <mat-option *ngFor="let reg of regionSearch" value="{{reg.val}}">{{reg.name}}</mat-option>
