@@ -5,7 +5,12 @@ import { SignupRoutingModule } from './signup-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './signup.component';
 import { WarningSvgIconComponent } from './warning-svg-icon/warning-svg-icon.component';
-
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatInputModule } from '@angular/material/input';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -16,8 +21,14 @@ import { WarningSvgIconComponent } from './warning-svg-icon/warning-svg-icon.com
     CommonModule,
     SignupRoutingModule,
     ReactiveFormsModule,
-    FormsModule
-    
+    FormsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTooltipModule,
+    MatInputModule,
+    MatStepperModule,
+    MatRadioModule
+
   ]
 })
 export class SignupModule { }
