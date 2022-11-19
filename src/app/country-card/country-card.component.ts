@@ -14,7 +14,7 @@ export class CountryCardComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  moreOnClick(countName: string): void {
+  getMoreDetails(countName: string): void {
 
     location.href = this._localUrl + "details/" + countName;
   }

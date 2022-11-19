@@ -104,8 +104,6 @@ export class HomeComponent implements OnInit {
     if (this.selectedString === 'all') {
       this.showSpinner();
       this.fetchAllData();
-    } else if (this.selectedString === undefined) {
-
     }
     else {
       this.showSpinner();

@@ -1,18 +1,21 @@
-<div *ngFor="let country of countryData">
+<div>
     <div class="title-bar">
-        <h2>{{country.name.common}}</h2>
+        <h2>{{countryData[0].name.common}}</h2>
     </div>
     <div class="container">
         <div class="lef-section">
             <div>
-                <img class="country-image" src="{{country.flags.png}}">
+                <img class="country-image" src="{{countryData[0].flags.png}}">
             </div>
             <div>
                 <ul class="button-list">
-                    <li class="span" *ngFor="let option of optionList"><a href="{{option.value}}">{{option.name}}</a>
+                    <li class="span"><a href="/home">Home</a>
+                    </li>
+                    <li class="span" *ngFor="let option of optionList" (click)="checkButtonStatus(option.value)">
+                        {{option.name}}
                     </li>
 
-                    <li class="span span-back" (click)="goBack()">Back</li>
+                    <li class="span span-back" (click)="returnToLogIn()">Logout</li>
                 </ul>
 
             </div>
@@ -33,32 +36,36 @@
                         <tbody>
                             <tr>
                                 <td>Name</td>
-                                <td aria-label="name" contenteditable='isEditable'>{{country.name.common}}</td>
+                                <td aria-label="name" contenteditable='isEditable'>{{countryData[0].name.common}}
+                                </td>
                             </tr>
                             <tr>
-                                <td>Official</td>
-                                <td aria-label="official name" contenteditable='isEditable'>{{country.name.official}}
+                                <td>Official Name</td>
+                                <td aria-label="official name" contenteditable='isEditable'>
+                                    {{countryData[0].name.official}}
                                 </td>
                             </tr>
                             <tr>
                                 <td>Capital</td>
-                                <td aria-label="capital name" contenteditable='isEditable'>{{country.capital}}</td>
+                                <td aria-label="capital name" contenteditable='isEditable'>{{countryData[0].capital}}
+                                </td>
                             </tr>
                             <tr>
                                 <td>Region</td>
-                                <td aria-label="Region" contenteditable='isEditable'>{{country.region}}</td>
+                                <td aria-label="Region" contenteditable='isEditable'>{{countryData[0].region}}</td>
                             </tr>
                             <tr>
                                 <td>SubRegion</td>
-                                <td aria-label="SubRegion" contenteditable='isEditable'>{{country.subregion}}</td>
+                                <td aria-label="SubRegion" contenteditable='isEditable'>{{countryData[0].subregion}}
+                                </td>
                             </tr>
                             <tr>
                                 <td>Area</td>
-                                <td aria-label="Area">{{country.area}} KM</td>
+                                <td aria-label="Area">{{countryData[0].area}} KM</td>
                             </tr>
                             <tr>
                                 <td>Population</td>
-                                <td aria-label="population">{{country.population}}</td>
+                                <td aria-label="population">{{countryData[0].population}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -66,11 +73,20 @@
 
                 </div>
                 <div><br></div>
-                <div class="border-country" *ngIf="country.borders">
+                <div class="map">
+
+                    <legend>Location</legend>
+                    <a href="{{countryData[0].maps.googleMaps}}" target="_blank">{{countryData[0].maps.googleMaps}}</a>
+
+                </div>
+                <div><br></div>
+                <div class="border-country" *ngIf="countryData[0].borders">
                     <legend>Border Countries</legend>
                     <ul class="border">
-                        <li class="border-list" aria-label="border countries" *ngFor="let bord of country.borders"
-                            (click)="getBorderCountries(bord)">{{bord}}</li>
+                        <li class="border-list" aria-label="border countries"
+                            *ngFor="let borderCode of countryData[0].borders"
+                            (click)="getDetailsOfBorderCountry(borderCode)">
+                            {{borderCode}}</li>
                     </ul>
 
 
@@ -80,12 +96,6 @@
                 </div>
 
                 <div><br></div>
-                <div class="map">
-
-                    <legend>Location</legend>
-                    <a href="{{country.maps.googleMaps}}" target="_blank">{{country.maps.googleMaps}}</a>
-
-                </div>
             </div>
 
 

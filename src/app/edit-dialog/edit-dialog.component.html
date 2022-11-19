@@ -1,0 +1,57 @@
+<div class="container">
+    <p>{{data[0].name.common}}</p>
+    <form class="form">
+        <mat-form-field class="input-form" appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="USA" aria-label="name input " [(ngModel)]="inputName" name="inputName"
+                autocomplete="off">
+        </mat-form-field>
+
+        <mat-form-field class="input-form" appearance="fill">
+            <mat-label>Official Name</mat-label>
+            <input matInput placeholder="United States of America" aria-label="official name input "
+                [(ngModel)]="inputOfficialName" name="inputOfficialName" autocomplete="off">
+        </mat-form-field>
+
+        <mat-form-field class="input-form" appearance="fill">
+            <mat-label>Capital</mat-label>
+            <input matInput placeholder="Washington, D.C." aria-label="Capital input " [(ngModel)]="inputCapital"
+                name="inputCapital" autocomplete="off">
+        </mat-form-field>
+
+        <mat-form-field class="input-form" appearance="fill">
+            <mat-label>Region</mat-label>
+            <input matInput placeholder="Americas" aria-label="region input" [(ngModel)]="inputRegion"
+                name="inputRegion" autocomplete="off">
+        </mat-form-field>
+
+        <mat-form-field class="input-form" appearance="fill">
+            <mat-label>Sub Region</mat-label>
+            <input matInput placeholder="North America" aria-label="sub region input" [(ngModel)]="inputSubRegion"
+                name="inputSubRegion" autocomplete="off">
+        </mat-form-field>
+
+        <mat-form-field class="input-form" appearance="fill">
+            <mat-label>Area</mat-label>
+            <input matInput placeholder="....KM" aria-label="area input" [(ngModel)]="inputArea" name="inputArea"
+                autocomplete="off">
+        </mat-form-field>
+
+        <mat-form-field class="input-form" appearance="fill">
+            <mat-label>Population</mat-label>
+            <input matInput placeholder="00000" aria-label="population input" [(ngModel)]="inputPopulation"
+                name="inputPopulation" autocomplete="off">
+        </mat-form-field>
+
+        <div class="button-row">
+            <button mat-icon-button color="primary" aria-label="Save icon" #tooltip="matTooltip" matTooltip="Save !"
+                matTooltipPosition="above" (click)="saveNewData()">
+                <mat-icon>save</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" aria-label="Cancel icon" #tooltip="matTooltip" matTooltip="Cancel !"
+                matTooltipPosition="above" (click)="closeDialoge()">
+                <mat-icon>cancel</mat-icon>
+            </button>
+        </div>
+    </form>
+</div>
