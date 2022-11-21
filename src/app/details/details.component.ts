@@ -3,10 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import { ICountries } from '../account';
 import { CountriesDataService } from '../countries-data.service';
 import { Location } from '@angular/common';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
+import { MatDialog } from '@angular/material/dialog'
 
 import { environment } from 'src/environments/environment';
 import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
+import { WebStorageService } from '../web-storage.service';
 
 @Component({
   selector: 'pm-details',
@@ -17,6 +18,7 @@ import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 
 export class DetailsComponent implements OnInit {
   private _localUrl = environment.baseUrl;
+
   countryData: ICountries[] = [];
   borderCountryName: string = '';
   dataOfAllCountries: ICountries[] = [];
@@ -28,13 +30,18 @@ export class DetailsComponent implements OnInit {
   sessionData: any;
 
 
-  constructor(private _countryDService: CountriesDataService, private _route: ActivatedRoute, private _location: Location, public dialog: MatDialog) { }
+  constructor(private _countryDService: CountriesDataService, private _route: ActivatedRoute, private _location: Location, public dialog: MatDialog, private _webStorage: WebStorageService
+  ) { }
 
   ngOnInit(): void {
+
+    this.countryName = this._route.snapshot.paramMap.get('countName');
     this._countryDService.getAllData().subscribe(countries => this.dataOfAllCountries = countries);
 
 
-    this.sessionData = sessionStorage.getItem('accountType');
+    this.sessionData = this._webStorage.getWebStorageData("accountType");
+    console.log(this.sessionData);
+
 
     if (this.sessionData === 'member') {
       this.optionList = this.userOptionList.map(item => item);
@@ -42,7 +49,7 @@ export class DetailsComponent implements OnInit {
     } else { this.optionList = this.adminOptionList.map(item => item); }
 
 
-    this.countryName = this._route.snapshot.paramMap.get('countName');
+
 
     this.getAllDetails();
 
@@ -50,17 +57,19 @@ export class DetailsComponent implements OnInit {
 
   getAllDetails(): void {
 
-    this._countryDService.getCountryDetails(this.countryName).subscribe(data => this.countryData = data);
+    this._countryDService.getCountryDetails(this.countryName).subscribe(data => { this.countryData = data });
+
+
 
 
   }
 
   getDetailsOfBorderCountry(code: string): void {
-    this._countryDService.getCountryDetailsByCode(code).subscribe(data => this.countryData = data);
+    this.countryData = this.dataOfAllCountries.filter((country: ICountries) => country.cca3.includes(code));
 
   }
   returnToLogIn(): void {
-    location.href = this._localUrl + 'logIn';
+    location.href = '/logIn';
     sessionStorage.clear();
   }
 

@@ -20,7 +20,7 @@
             <mat-step [stepControl]="firstFormGroup">
                 <form [formGroup]="firstFormGroup">
                     <ng-template matStepLabel>Select Your Account </ng-template>
-                    <mat-radio-group color="primary" class="radio" aria-labelledby="example-radio-group-label"
+                    <mat-radio-group color="primary" class="radio" aria-label="account type radio button"
                         formControlName="accountType">
 
                         <mat-radio-button class="radio-input admin" name="accounttype" value="admin"
@@ -33,7 +33,8 @@
 
                     </mat-radio-group>
                     <div>
-                        <button mat-button matStepperNext [disabled]="typeValid && typeValid.invalid">Next</button>
+                        <button mat-button matStepperNext [disabled]="typeValid && typeValid.invalid"
+                            aria-label="next button">Next</button>
                     </div>
                 </form>
             </mat-step>
@@ -45,19 +46,21 @@
                     <ng-template matStepLabel>Fill out your Name</ng-template>
 
                     <mat-form-field>
-                        <input matInput placeholder="Name" formControlName="fname" autocomplete="off">
+                        <input matInput placeholder="Name" aria-label="first name" formControlName="fname"
+                            autocomplete="off">
                         <mat-error *ngIf="fnameValid && fnameValid.hasError('required')">
                             Name is <strong>required</strong></mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <input matInput placeholder="Last Name" formControlName="lname" autocomplete="off">
+                        <input matInput placeholder="Last Name" formControlName="lname" aria-label="last name"
+                            autocomplete="off">
                         <mat-error *ngIf="lnameValid && lnameValid.hasError('required')">
                             Last Name is <strong>required</strong></mat-error>
                     </mat-form-field>
 
                     <div>
-                        <button mat-button matStepperPrevious>Back</button>
-                        <button mat-button matStepperNext
+                        <button mat-button matStepperPrevious aria-label="back button">Back</button>
+                        <button mat-button matStepperNext aria-label="next button"
                             [disabled]="fnameValid && fnameValid.invalid || lnameValid && lnameValid.invalid">Next</button>
                     </div>
                 </form>
@@ -67,8 +70,8 @@
                     <ng-template matStepLabel>Fill out Your Email & Password </ng-template>
 
                     <mat-form-field>
-                        <input matInput type="email" placeholder="Email" formControlName="email" autocomplete="off"
-                            placeholder="Ex. pat@example.com">
+                        <input matInput type="email" placeholder="Email" aria-label="email input "
+                            formControlName="email" autocomplete="off" placeholder="Ex. pat@example.com">
                         <mat-error *ngIf="emailValid && emailValid.hasError('required')">
                             Email is <strong>required</strong>
                         </mat-error>
@@ -77,15 +80,15 @@
                         </mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <input matInput type="password" placeholder="Password" formControlName="password"
-                            autocomplete="off">
+                        <input matInput type="password" placeholder="Password" aria-label="password input"
+                            formControlName="password" autocomplete="off">
                         <mat-error *ngIf="passwordValid && passwordValid.hasError('required')">
                             Password is <strong>required</strong></mat-error>
                     </mat-form-field>
 
                     <div>
-                        <button mat-button matStepperPrevious>Back</button>
-                        <button mat-button matStepperNext
+                        <button mat-button matStepperPrevious aria-label="back button">Back</button>
+                        <button mat-button matStepperNext aria-label="next button"
                             [disabled]="emailValid && emailValid.invalid || passwordValid && passwordValid.invalid">Next</button>
                     </div>
                 </form>
@@ -94,11 +97,11 @@
             <mat-step>
                 <ng-template matStepLabel="done">Done</ng-template>
                 <button class="last-step-button" mat-mini-fab color="warn" (click)="stepper.reset()"
-                    matTooltipClass="tooltip" matTooltip="clear" matTooltipPosition="below">
+                    matTooltipClass="tooltip" matTooltip="clear" matTooltipPosition="below" aria-label="clear button">
                     <mat-icon>clear</mat-icon>
                 </button>
                 <button class="last-step-button" mat-flat-button color="primary" type="submit" (click)="submit()"
-                    aria-label="submit form">Create Account</button>
+                    aria-label="submit form" aria-label="create account button">Create Account</button>
 
 
 

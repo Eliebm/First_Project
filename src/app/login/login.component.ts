@@ -4,6 +4,7 @@ import { FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '
 import { environment } from 'src/environments/environment';
 
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { WebStorageService } from '../web-storage.service';
 
 
 @Component({
@@ -41,7 +42,7 @@ export class LoginComponent implements OnInit {
 
   }
 
-  constructor(private accountserv: AccountService, private _snackBar: MatSnackBar) {
+  constructor(private accountserv: AccountService, private _snackBar: MatSnackBar, private _webStorage: WebStorageService) {
 
   }
 
@@ -61,10 +62,10 @@ export class LoginComponent implements OnInit {
 
       if (this.accountserv.getAccount(this.nameValid?.value, this.passwordValid?.value, this.typeValid?.value) === true) {
         this.storage = this.loginForm.get('type')?.value;
+        this._webStorage.setWebStorageData('accountType', this.storage);
 
-        sessionStorage.setItem('accountType', this.storage);
 
-        location.href = this._localUrl + "home";
+        location.href = "/home";
       } else {
         this.openSnackBar("You have Entered an Invalid Name Or Password. Please Try Again.");
 
