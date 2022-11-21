@@ -9,7 +9,7 @@ import { DetailsComponent } from './details.component';
 import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -27,7 +27,8 @@ import { FormsModule } from '@angular/forms';
     MatInputModule,
     MatIconModule,
     MatTooltipModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
 
 
 

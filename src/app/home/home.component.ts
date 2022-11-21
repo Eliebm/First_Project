@@ -12,7 +12,6 @@ import { CountriesDataService } from '../countries-data.service';
 })
 
 export class HomeComponent implements OnInit {
-  private localUrl = environment.baseUrl;
   regionSearch: any[] = [{ "val": "all", "name": "All Regions" }, { "val": "Africa", "name": "Africa" }, { "val": "Americas", "name": "Americas" },
   { "val": "Asia", "name": "Asia" }, { "val": "Europe", "name": "Europe" }, { "val": "Oceania", "name": "Oceania" }]
 
@@ -22,7 +21,7 @@ export class HomeComponent implements OnInit {
   selectedString: string = '';
   loadSpinner: boolean = false;
   isDisable: boolean = true;
-  selectedValue = 'all';
+  selectedValue = '';
 
 
 
@@ -43,8 +42,8 @@ export class HomeComponent implements OnInit {
   }
 
   logoutClick(): void {
-    location.href = this.localUrl + "logIn";
-    sessionStorage.clear;
+    location.href = "/logIn";
+    sessionStorage.clear();
 
   }
   fetchAllData(): void {

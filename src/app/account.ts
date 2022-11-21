@@ -15,6 +15,7 @@ export interface ICountries {
     official: string,
 
   };
+  cca3: string,
   capital: string,
   flags: {
     png: string,

@@ -1,4 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { ICountries } from '../account';
@@ -10,34 +11,71 @@ import { ICountries } from '../account';
 })
 export class EditDialogComponent implements OnInit {
 
-  public inputName: string = this.data[0].name.common;
-  public inputOfficialName: string = this.data[0].name.official;
-  public inputCapital: string = this.data[0].capital;
-  public inputRegion: string = this.data[0].region;
-  public inputSubRegion: string = this.data[0].subregion;
-  public inputArea: any = this.data[0].area;
-  public inputPopulation: any = this.data[0].population;
-
 
   constructor(public dialogRef: MatDialogRef<EditDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: ICountries[],) { }
+    @Inject(MAT_DIALOG_DATA) public data: ICountries[]) { }
+
+
 
   ngOnInit(): void {
 
+
   }
+  editForm = new FormGroup({
+    commonName: new FormControl(this.data[0].name.common, [Validators.required]),
+    officialName: new FormControl(this.data[0].name.official, [Validators.required]),
+    capital: new FormControl(this.data[0].capital, [Validators.required]),
+    region: new FormControl(this.data[0].region, [Validators.required]),
+    subRegion: new FormControl(this.data[0].subregion, [Validators.required]),
+    area: new FormControl(this.data[0].area, [Validators.required]),
+    population: new FormControl(this.data[0].population, [Validators.required])
+
+  });
+
+
+  get commonNameValidation() {
+    return this.editForm.get('commonName');
+
+  }
+  get officialNameValidation() {
+    return this.editForm.get('officialName');
+  }
+  get capitalValidation() {
+    return this.editForm.get('capital');
+  }
+  get regionValidation() {
+    return this.editForm.get('region');
+  }
+  get subRegionValidation() {
+    return this.editForm.get('subRegion');
+  }
+  get areaValidation() {
+    return this.editForm.get('area');
+  }
+  get populationValidation() {
+    return this.editForm.get('population');
+  }
+
+
+
+
   closeDialoge(): void {
     this.dialogRef.close();
 
   }
 
   saveNewData(): void {
-    this.data[0].name.common = this.inputName;
-    this.data[0].name.official = this.inputOfficialName;
-    this.data[0].capital = this.inputCapital;
-    this.data[0].region = this.inputRegion;
-    this.data[0].subregion = this.inputSubRegion;
-    this.data[0].area = this.inputArea;
-    this.data[0].population = this.inputPopulation;
+
+
+
+    this.data[0].name.common = this.commonNameValidation?.value!;
+    this.data[0].name.official = this.officialNameValidation?.value!;
+    this.data[0].capital = this.capitalValidation?.value!;
+    this.data[0].region = this.regionValidation?.value!;
+    this.data[0].subregion = this.subRegionValidation?.value!;
+    this.data[0].area = this.areaValidation?.value!;
+    this.data[0].population = this.populationValidation?.value!;
+
 
     this.dialogRef.close();
   }

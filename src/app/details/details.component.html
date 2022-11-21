@@ -34,6 +34,7 @@
                             <th></th>
                         </thead>
                         <tbody>
+
                             <tr>
                                 <td>Name</td>
                                 <td aria-label="name" contenteditable='isEditable'>{{countryData[0].name.common}}
@@ -43,6 +44,11 @@
                                 <td>Official Name</td>
                                 <td aria-label="official name" contenteditable='isEditable'>
                                     {{countryData[0].name.official}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Code</td>
+                                <td aria-label="Code" contenteditable='isEditable'>{{countryData[0].cca3}}
                                 </td>
                             </tr>
                             <tr>
@@ -80,12 +86,17 @@
 
                 </div>
                 <div><br></div>
+
+                <!-- list of border countries -->
+
                 <div class="border-country" *ngIf="countryData[0].borders">
                     <legend>Border Countries</legend>
                     <ul class="border">
                         <li class="border-list" aria-label="border countries"
                             *ngFor="let borderCode of countryData[0].borders"
-                            (click)="getDetailsOfBorderCountry(borderCode)">
+                            (click)="getDetailsOfBorderCountry(borderCode)"
+                            (mouseenter)="getNameOfBorderCountry(borderCode)" matTooltipClass="tooltip"
+                            matTooltip={{borderCountryName}} matTooltipPosition="below">
                             {{borderCode}}</li>
                     </ul>
 

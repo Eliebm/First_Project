@@ -1,51 +1,70 @@
 <div class="container">
     <p>{{data[0].name.common}}</p>
-    <form class="form">
+    <form class="form" [formGroup]="editForm">
         <mat-form-field class="input-form" appearance="fill">
             <mat-label>Name</mat-label>
-            <input matInput placeholder="USA" aria-label="name input " [(ngModel)]="inputName" name="inputName"
-                autocomplete="off">
+            <input matInput placeholder="USA" aria-label="name input " formControlName="commonName" autocomplete="off">
+            <mat-error *ngIf="commonNameValidation && commonNameValidation.hasError('required')">
+                Common Name is <strong>required</strong>
+            </mat-error>
         </mat-form-field>
 
         <mat-form-field class="input-form" appearance="fill">
             <mat-label>Official Name</mat-label>
             <input matInput placeholder="United States of America" aria-label="official name input "
-                [(ngModel)]="inputOfficialName" name="inputOfficialName" autocomplete="off">
+                formControlName="officialName" autocomplete="off">
+            <mat-error *ngIf="officialNameValidation && officialNameValidation.hasError('required')">
+                Official Name is <strong>required</strong>
+            </mat-error>
         </mat-form-field>
 
         <mat-form-field class="input-form" appearance="fill">
             <mat-label>Capital</mat-label>
-            <input matInput placeholder="Washington, D.C." aria-label="Capital input " [(ngModel)]="inputCapital"
-                name="inputCapital" autocomplete="off">
+            <input matInput placeholder="Washington, D.C." aria-label="Capital input " formControlName="capital"
+                autocomplete="off">
+            <mat-error *ngIf="capitalValidation && capitalValidation.hasError('required')">
+                Capital is <strong>required</strong>
+            </mat-error>
         </mat-form-field>
 
         <mat-form-field class="input-form" appearance="fill">
             <mat-label>Region</mat-label>
-            <input matInput placeholder="Americas" aria-label="region input" [(ngModel)]="inputRegion"
-                name="inputRegion" autocomplete="off">
+            <input matInput placeholder="Americas" aria-label="region input" formControlName="region"
+                autocomplete="off">
+            <mat-error *ngIf="regionValidation && regionValidation.hasError('required')">
+                Region is <strong>required</strong>
+            </mat-error>
         </mat-form-field>
 
         <mat-form-field class="input-form" appearance="fill">
             <mat-label>Sub Region</mat-label>
-            <input matInput placeholder="North America" aria-label="sub region input" [(ngModel)]="inputSubRegion"
-                name="inputSubRegion" autocomplete="off">
+            <input matInput placeholder="North America" aria-label="sub region input" formControlName="subRegion"
+                autocomplete="off">
+            <mat-error *ngIf="subRegionValidation && subRegionValidation.hasError('required')">
+                SubRegion is <strong>required</strong>
+            </mat-error>
         </mat-form-field>
 
         <mat-form-field class="input-form" appearance="fill">
             <mat-label>Area</mat-label>
-            <input matInput placeholder="....KM" aria-label="area input" [(ngModel)]="inputArea" name="inputArea"
-                autocomplete="off">
+            <input matInput placeholder="....KM" aria-label="area input" formControlName="area" autocomplete="off">
+            <mat-error *ngIf="areaValidation && areaValidation.hasError('required')">
+                Area is <strong>required</strong>
+            </mat-error>
         </mat-form-field>
 
         <mat-form-field class="input-form" appearance="fill">
             <mat-label>Population</mat-label>
-            <input matInput placeholder="00000" aria-label="population input" [(ngModel)]="inputPopulation"
-                name="inputPopulation" autocomplete="off">
+            <input matInput placeholder="00000" aria-label="population input" formControlName="population"
+                autocomplete="off">
+            <mat-error *ngIf="populationValidation && populationValidation.hasError('required')">
+                Population is <strong>required</strong>
+            </mat-error>
         </mat-form-field>
 
         <div class="button-row">
             <button mat-icon-button color="primary" aria-label="Save icon" #tooltip="matTooltip" matTooltip="Save !"
-                matTooltipPosition="above" (click)="saveNewData()">
+                matTooltipPosition="above" (click)="saveNewData()" [disabled]="!editForm.valid">
                 <mat-icon>save</mat-icon>
             </button>
             <button mat-icon-button color="warn" aria-label="Cancel icon" #tooltip="matTooltip" matTooltip="Cancel !"
