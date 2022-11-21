@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../account.service';
-import { FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
-import { WebStorageService } from '../web-storage.service';
+
+import { AuthenticationService } from '../authentication.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -22,8 +24,7 @@ export class LoginComponent implements OnInit {
 
   loginForm = new FormGroup({
     name: new FormControl(null, [Validators.required]),
-    password: new FormControl(null, [Validators.required]),
-    type: new FormControl('', [Validators.required])
+    password: new FormControl(null, [Validators.required])
 
   });
 
@@ -35,14 +36,9 @@ export class LoginComponent implements OnInit {
 
     return this.loginForm.get('password');
   }
-  get typeValid() {
-
-    return this.loginForm.get('type');
 
 
-  }
-
-  constructor(private accountserv: AccountService, private _snackBar: MatSnackBar, private _webStorage: WebStorageService) {
+  constructor(private accountserv: AccountService, private _snackBar: MatSnackBar, private _authentService: AuthenticationService, private _router: Router) {
 
   }
 
@@ -54,23 +50,32 @@ export class LoginComponent implements OnInit {
   }
 
   submit(): void {
+    const val = this.loginForm.value;
+
     if (this.loginForm.invalid) {
       this.openSnackBar("There Are Items That require your attention !");
 
     }
     else {
 
-      if (this.accountserv.getAccount(this.nameValid?.value, this.passwordValid?.value, this.typeValid?.value) === true) {
-        this.storage = this.loginForm.get('type')?.value;
-        this._webStorage.setWebStorageData('accountType', this.storage);
+      this._authentService.login(val).subscribe(data => {
+        console.log("Is Login Success: " + data);
+
+        if (data) { this._router.navigate(['/home']); }
+        else {
+          this.openSnackBar("You have Entered an Invalid Name Or Password. Please Try Again.");
 
 
-        location.href = "/home";
-      } else {
-        this.openSnackBar("You have Entered an Invalid Name Or Password. Please Try Again.");
+        }
+      });
 
-
-      }
+      /*  if (this.accountserv.getAccount(this.nameValid?.value, this.passwordValid?.value, this.typeValid?.value) === true) {
+          this.storage = this.loginForm.get('type')?.value;
+          this._authentService.setWebStorageData('accountType', this.storage);
+  
+  
+          location.href = "/home";
+        } */
     }
 
 

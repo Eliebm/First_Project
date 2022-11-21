@@ -7,7 +7,8 @@ import { MatDialog } from '@angular/material/dialog'
 
 import { environment } from 'src/environments/environment';
 import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
-import { WebStorageService } from '../web-storage.service';
+
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'pm-details',
@@ -30,7 +31,7 @@ export class DetailsComponent implements OnInit {
   sessionData: any;
 
 
-  constructor(private _countryDService: CountriesDataService, private _route: ActivatedRoute, private _location: Location, public dialog: MatDialog, private _webStorage: WebStorageService
+  constructor(private _countryDService: CountriesDataService, private _route: ActivatedRoute, private _location: Location, public dialog: MatDialog, private _authentService: AuthenticationService
   ) { }
 
   ngOnInit(): void {
@@ -39,7 +40,7 @@ export class DetailsComponent implements OnInit {
     this._countryDService.getAllData().subscribe(countries => this.dataOfAllCountries = countries);
 
 
-    this.sessionData = this._webStorage.getWebStorageData("accountType");
+    this.sessionData = this._authentService.getWebStorageData("accountType");
     console.log(this.sessionData);
 
 
