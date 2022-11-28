@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
     }
     else {
 
-      this._authentService.login(val).subscribe(data => {
+      this._authentService.logIn(val).subscribe(data => {
         console.log("Is Login Success: " + data);
 
         if (data) { this._router.navigate(['/home']); }

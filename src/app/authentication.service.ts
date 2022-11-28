@@ -6,12 +6,13 @@ import { delay, Observable, of, tap } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthenticationService {
+  url = "http://192.168.1.187:5005/swagger/index.html#/";
 
   constructor(private http: HttpClient) { }
 
   isUserLoggedIn: boolean = false;
 
-  login(User: any): Observable<{}> {
+  logIn(User: any): Observable<{}> {
     console.log(User.name);
     console.log(User.password);
 
@@ -26,6 +27,13 @@ export class AuthenticationService {
     );
   }
 
+  signIn(User: any) {
+    return this.http
+      .post<any>(this.url, User).subscribe((res: any) => {
+        localStorage.setItem('access_token', res.token);
+
+      });
+  }
 
   getWebStorageData(itemKey: string) {
 
