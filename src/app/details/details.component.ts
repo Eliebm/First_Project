@@ -29,6 +29,8 @@ export class DetailsComponent implements OnInit {
   userOptionList: any[] = [{ "name": "Gallery ", "value": "gallery" }];
   optionList: any[] = [];
   sessionData: any;
+  accessToken: any;
+  refreshToken: any;
 
 
   constructor(private _countryDService: CountriesDataService, private _route: ActivatedRoute, private _location: Location, public dialog: MatDialog, private _authentService: AuthenticationService
@@ -41,7 +43,7 @@ export class DetailsComponent implements OnInit {
 
 
     this.sessionData = this._authentService.getWebStorageData("accountType");
-    console.log(this.sessionData);
+
 
 
     if (this.sessionData === 'member') {
@@ -49,7 +51,15 @@ export class DetailsComponent implements OnInit {
 
     } else { this.optionList = this.adminOptionList.map(item => item); }
 
+    this.accessToken = this._authentService.getTokenStorage('access_token');
+    this.refreshToken = this._authentService.getTokenStorage('refresh_token');
 
+
+
+    if (this._authentService.isTokenExpired(this.accessToken) === true) {
+
+      this._authentService.refreshToken(this.refreshToken);
+    }
 
 
     this.getAllDetails();
@@ -70,8 +80,7 @@ export class DetailsComponent implements OnInit {
 
   }
   returnToLogIn(): void {
-    location.href = '/logIn';
-    sessionStorage.clear();
+    this._authentService.logout();
   }
 
   openEditDialog(): void {

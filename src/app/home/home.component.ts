@@ -1,6 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { AuthenticationService } from '../authentication.service'
 import { ICountries } from '../account';
 import { CountriesDataService } from '../countries-data.service';
 
@@ -22,17 +22,29 @@ export class HomeComponent implements OnInit {
   loadSpinner: boolean = false;
   isDisable: boolean = true;
   selectedValue = '';
+  accessToken: any;
+  refreshToken: any;
 
 
 
 
 
-  constructor(private countriesDService: CountriesDataService) { }
+  constructor(private countriesDService: CountriesDataService, private _authentService: AuthenticationService) { }
 
   ngOnInit(): void {
     // if (sessionStorage.getItem("accountType") === null) {
     //   location.href = "/logIn";
     //  }
+
+    this.accessToken = this._authentService.getTokenStorage('access_token');
+    this.refreshToken = this._authentService.getTokenStorage('refresh_token');
+
+
+
+    if (this._authentService.isTokenExpired(this.accessToken) === true) {
+
+      this._authentService.refreshToken(this.refreshToken);
+    }
 
 
     this.fetchAllData();
@@ -42,8 +54,8 @@ export class HomeComponent implements OnInit {
   }
 
   logoutClick(): void {
-    location.href = "/logIn";
-    sessionStorage.clear();
+
+    this._authentService.logout();
 
   }
   fetchAllData(): void {
