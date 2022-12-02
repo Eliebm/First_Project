@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserModule } from '@angular/platform-browser';
@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressSpinner } from '@angular/material/progress-spinner'
+import { HttpInterceptorInterceptor } from './http-interceptor.interceptor';
 
 
 @NgModule({
@@ -29,7 +30,7 @@ import { MatProgressSpinner } from '@angular/material/progress-spinner'
 
 
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
